@@ -25,12 +25,12 @@ function Login({toggleLogin,toggleRegister}) {
       <form className='formulario'>
         <div className="mail">
         <label><img src={logoM} alt="" /> Correo Electronico:</label>
-        <div><input type="email" placeholder='Correo@Example.com' value={correo} onChange={(e)=>{setCorreo(e.target.value)}} required/></div>
+        <div><input type="email" placeholder='Correo@Example.com' id='email' value={correo} onChange={(e)=>{setCorreo(e.target.value)}} required/></div>
         
         </div>
         <div className="key">
           <label><img src={logoK} alt="" /> Contraseña:</label>
-          <div><input type="password" placeholder='Contraseña' value={password} onChange={(e)=>{setPassword(e.target.value)}} required /></div>
+          <div><input type="password" placeholder='Contraseña' id='Password' value={password} onChange={(e)=>{setPassword(e.target.value)}} required /></div>
           
         </div>
         <div className="botones">
