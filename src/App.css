@@ -131,15 +131,113 @@ footer a{
   text-decoration: none;
   color: #eee8a9;
 }
-.usuario{
-  margin-left: 85%;
-  color:#eee8a9;
-}
 .home{
-  background-color: #009585;
-  color: #eee8a9;
+  background-color: #eee8a9;
+  color:#02665c;
 }
 main{
   width: 100%;
   text-align: center;
+}
+
+.login-sidebar{
+  background-color: #009585;
+  color: #eee8a9;
+  width: 50%;
+  height: 200px;
+  text-align: center;
+  border-top-right-radius: 30%;
+}
+.login-sidebar2{
+  background-color: #009585;
+  color: #eee8a9;
+  width: 50%;
+  height: 350px;
+  text-align: center;
+  border-top-left-radius: 30%;
+  margin-left: 50%;
+}
+.login-sidebar3{
+  background-color: #009585;
+  color: #eee8a9;
+  width: 50%;
+  height: 230px;
+  text-align: center;
+  border-top-right-radius: 30%;
+}
+.login-sidebar4{
+  background-color: #009585;
+  color: #eee8a9;
+  width: 50%;
+  height: 210px;
+  text-align: center;
+  border-top-left-radius: 30%;
+  margin-left: 50%;
+}
+.botones{
+  width: 100%;
+  margin-top: 5%;
+  height: 30px;
+}
+.botones1 Link{
+  text-decoration: none;
+}
+.btns button{
+  width: 20%;
+  height: 40px;
+  border-radius: 20%;
+  border-color:#97b1ab;
+  background-color:#009585;
+  color: #eee8a9;
+  margin-bottom: 4%;
+  margin-top: 4%;
+  margin-left: 18%;
+}
+.botones .button{
+  width: 50%;
+  margin-left: 12%;
+}
+input{
+  width: 60%;
+  height: 20px;
+}
+.p{
+  color:#009585 ;
+  text-decoration: none;
+}
+.p2{
+  color: #eee8a9;
+  text-decoration: none;
+}
+.rt{
+  width: 100%;
+  height: 70px;
+}
+.rt li{
+  margin-top: 1%;
+  width: 100%;
+  
+}
+.ing{
+  background-color:#009585;
+  color: #eee8a9;
+  text-align: center;
+  display: flex;
+  gap: 16%;
+  height: 50px;
+}
+.ing input{
+  width: 100%;
+  background-color: #eee8a9;
+  color:#02665c;
+}
+.boton{
+  background-color:#009585;
+}
+.boton button{
+  margin-left: 45%;
+  background-color: #eee8a9;
+  color: #02665c;
+  width: 10%;
+  height: 30px;
 }

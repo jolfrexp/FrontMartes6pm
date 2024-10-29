@@ -1,11 +1,17 @@
 import React from 'react'
 
-function gasto() {
+function Gasto({gastos,id}) {
+  
   return (
     <div>
-      
+     <ul className='home rt'>
+      <li>{id}</li>
+      <li>{gastos.nombre}</li>
+      <li>{gastos.descripcion}</li>
+      <li>{gastos.monto}</li>
+      </ul> 
     </div>
   )
 }
 
-export default gasto
+export default Gasto

@@ -1,11 +1,16 @@
 import React from 'react'
 
-function ingreso() {
+function Ingreso({ingreso,id}) {
   return (
-    <div>
-      
-    </div>
+    <>
+     <ul className='home rt'>
+      <li>{id}</li>
+      <li>{ingreso.nombre}</li>
+      <li>{ingreso.descripcion}</li>
+      <li>{ingreso.monto}</li>
+      </ul> 
+    </>
   )
 }
 
-export default ingreso
+export default Ingreso

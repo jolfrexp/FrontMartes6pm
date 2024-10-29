@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Header from '../components/header'
 import Nav from '../components/nav'
 import img1 from "../assets/ahorro.png"
@@ -8,7 +8,19 @@ import avatar1 from "../assets/avatar1.png"
 import avatar2 from "../assets/avatar2.png"
 import avatar3 from "../assets/avatar3.png"
 import Footer from '../components/footer'
+import Login from '../components/Login'
+import Register from '../components/Register'
+
 function Principal() {
+  const [showLogin,setShowLogin] = useState(false)
+  const [showRegister,setShowRegister] = useState(false)
+  const toggleRegister = () =>{
+    setShowRegister(!showRegister)
+  }
+  const toggleLogin = () =>{
+    setShowLogin(!showLogin)
+  }
+ 
   return (
     <div className="principal">
       <Header/>
@@ -44,7 +56,7 @@ function Principal() {
    
         </div>
         <div className="recomendaciones">
-          <div className="recomendacion animate__animated animate__fadeInRight animate__delay-3s">
+          <div className="recomendacion animate__animated animate__fadeInRight animate__delay-1s">
             <div className="cont-img2">
               <img src={avatar1} alt="" /> 
               <h1>Ana</h1>
@@ -56,7 +68,7 @@ function Principal() {
             </div>
             
           </div>
-          <div className="recomendacion animate__animated animate__fadeInLeft animate__delay-3s">
+          <div className="recomendacion animate__animated animate__fadeInLeft animate__delay-2s">
           
             <div className="textoRe">
               <p>¡Me gustó mucho la variedad de contenido que ofreces! Hay una buena mezcla de artículos, videos y recursos que hacen que todo sea interesante y fácil de digerir. Además, me parece genial que incluyas secciones interactivas, como encuestas o comentarios, que me permiten participar y compartir mis opiniones.</p>
@@ -81,6 +93,17 @@ function Principal() {
         </div>
     
       </div>
+      {showLogin || showRegister ? "" :<div className="btns">
+        <button className='animate__animated animate__fadeInLeft' onClick={toggleLogin}>Ingresar</button>
+        <button className='animate__animated animate__fadeInRight' onClick={toggleRegister}>Registrarse</button>
+      </div>}
+      
+      
+        {showLogin ? <div className="Inicio"><Login toggleLogin={toggleLogin} toggleRegister={toggleRegister}/>
+        </div> : ""}
+        {showRegister ? <div className="registro"> <Register toggleRegister={toggleRegister} toggleLogin={toggleLogin}/></div> :""}
+      
+      
       <Footer/>
     </div>
   )
