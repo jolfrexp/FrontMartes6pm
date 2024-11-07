@@ -18,8 +18,8 @@ function Categoria({toggleCategoria}) {
         </div>
         <input type="text" placeholder='https://imagen1.com' />
         <div className="botones">
-        <Link className='button p2'>Agregar</Link>
-        <Link className='button p2' onClick={toggleCategoria}>Cerrar</Link>
+        <button className='button p'>Agregar</button>
+        <button className='button p' onClick={toggleCategoria}>Cerrar</button>
         </div>
         
       </form>

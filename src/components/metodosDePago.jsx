@@ -13,8 +13,8 @@ function MetodosDePago({toggleMetodo}) {
         </div>
         <input type="text" placeholder='Descripcion'/>
         <div className="botones">
-        <Link className='button p2'>Registrar</Link>
-        <Link className='button p2' onClick={toggleMetodo}>Cerrar</Link>
+        <button className='button p'>Registrar</button>
+        <button className='button p' onClick={toggleMetodo}>Cerrar</button>
         </div>
         
       </form>

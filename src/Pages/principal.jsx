@@ -24,7 +24,7 @@ function Principal() {
   return (
     <div className="principal">
       <Header/>
-      <Nav sel4 ="sel" sel1= "sec"sel2 ="sec" sel3 ="sec" n4="n"/>
+      <Nav ecofin="EcoFin" sel4 ="sel" sel1= "sec"sel2 ="sec" sel3 ="sec" n4="n"/>
       <div>
         <div className="imagenes">
           <div className="cont-img animate__animated animate__fadeInLeft ">
@@ -80,7 +80,7 @@ function Principal() {
               </div>
             
           </div>
-          <div className="recomendacion animate__animated animate__fadeInRight animate__delay-3s">
+          <div className="recomendacion animate__animated animate__fadeInRight animate__delay-2s">
           <div className="cont-img2">
               <img src={avatar3} alt="" /> 
              <h1>Sofi</h1>  

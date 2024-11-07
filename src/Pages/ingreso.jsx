@@ -5,7 +5,6 @@ function Ingreso({ingreso,id}) {
     <>
      <ul className='home rt'>
       <li>{id}</li>
-      <li>{ingreso.nombre}</li>
       <li>{ingreso.descripcion}</li>
       <li>{ingreso.monto}</li>
       </ul> 

@@ -3,11 +3,11 @@ import { Link } from 'react-router-dom'
 function Nav(props) {
   return (
     <>
-    <nav>
+    <nav className={props.class}>
       
       <ul>
         <li className={props.n4}>
-       <Link className={props.sel4}  to="/"><p>EcoFin</p> </Link>
+       <Link className={props.sel4}  to="/"><p>{props.ecofin}</p> </Link>
       </li>
         <li className={props.n1}>
           <Link className={props.sel1} to = "/Home"><p>{props.home}</p></Link>
@@ -18,15 +18,15 @@ function Nav(props) {
         <li className={props.n3}>
           <Link className={props.sel3} to="/Ingresos"><p>{props.ingresos}</p></Link>
         </li>
-      </ul>
-      <ul className='ul2'>
-        <li>
-          <Link className="ul1" to="/"><p>{props.sesion}</p></Link>
-        </li>
-        <li>
-          <Link className='ul1'><p>{props.register}</p></Link>
+        <li className={props.n5}>
+          <Link className={props.sel5}to="/Facturas"><p>{props.facturas}</p></Link>
         </li>
       </ul>
+        <ul className='ul2'>
+          <li>
+            <button className='button-perfil' onClick={props.togglePerfil}><p>{props.register}</p></button>
+          </li>
+        </ul>
     </nav>
     </>
   )

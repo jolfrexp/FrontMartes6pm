@@ -1,14 +1,25 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import Header from '../components/header'
 import Nav from '../components/nav'
 import Footer from '../components/footer'
 import Graphic from '../components/Graphic'
-import { Link } from 'react-router-dom'
 import Categoria from '../components/categoria'
 import MetodosDePago from '../components/metodosDePago'
+import FacturaIn from '../components/facturaIn'
+import { usuarioContext } from '../components/usuarioProvider'
+import User from './user'
 function Home() {
+  let {infoUsuario} = useContext(usuarioContext)
   const [showCategoria,setShowCategoria] = useState(false)
   const [showMetodoDePago,setShowMetodoDePago] =useState(false)
+  const [showFactura,setShowFactura] = useState(false)
+  const [showPerfil,setShowPerfil] = useState(false)
+  const togglePerfil = () =>{
+    setShowPerfil(!showPerfil)
+  }
+  const toggleFactura = () =>{
+      setShowFactura(!showFactura)
+  }
   const toggleCategoria = () =>{
     setShowCategoria(!showCategoria)
   }
@@ -20,22 +31,24 @@ function Home() {
   const balance = ingresos - gastos;
   return (
     <div className='home'>
-      <Header/>
-      <Nav sel4="sec" sel1 ="sel" sel2 ="sec" sel3 ="sec" n1="n" sesion="Cerrar sesion" register= "Jolfre gonzalez"
-      ingresos = "Ingresos" gastos= "Gastos" home="Home"/>
-      <h1 className='p'>Balance general</h1>
-      <main className='animate__animated animate__fadeInUp p'>
+      <Header class = {showPerfil ? 'opc' :""}/>
+      {showPerfil ?<User togglePerfil={togglePerfil}/>:"" }
+      <Nav class ={showPerfil ? 'opc' :""} sel4="sec" sel5="sec" sel1 ="sel" sel2 ="sec" sel3 ="sec" n1="n" sesion="Cerrar sesion" facturas="Facturas" register= {infoUsuario.nombre}
+      ingresos = "Ingresos" gastos= "Gastos" home="Home" togglePerfil={togglePerfil}/>
+      <h1 className={showPerfil ? 'opc' :"p"}>Balance general</h1>
+      <main className={showPerfil ? 'opc' :"animate__animated animate__fadeInUp"}>
         <Graphic ingresos={ingresos} gastos={gastos} balance={balance}/>
       </main> 
-      {showCategoria || showMetodoDePago ? "" :<div className="botones">
-        <Link className='button p' to="/Gastos">Agregar Gasto</Link>
-        <Link className='button p' to="/Ingresos">Agregar Ingreso</Link>
-        <Link className='button p' onClick={toggleCategoria}>Agregar Categoria</Link>
-        <Link className='button p' onClick={toggleMetodo}>Agregar Metodo de pago</Link>
+      {showCategoria || showMetodoDePago ? "" :<div className={showPerfil ? 'opc botones' :"botones"}>
+        <button className='button p2' onClick={toggleFactura}>Ingresar Factura</button>
+        <button className='button p2' onClick={toggleCategoria}>Agregar Categoria</button>
+        <button className='button p2' onClick={toggleMetodo}>Agregar Metodo de pago</button>
         </div>}
-      {showCategoria ? <div className="categoria"> <Categoria toggleCategoria={toggleCategoria}/></div> :""}
+      {showCategoria ? <div className="categoria"><Categoria toggleCategoria={toggleCategoria}/></div> :""}
       {showMetodoDePago ? <div className="MDP"> <MetodosDePago toggleMetodo={toggleMetodo}/></div> :""}
-      <Footer/>
+      {showFactura ? <div className="FTR"> <FacturaIn toggleMetodo={toggleMetodo}/></div> :""}
+      <Footer class = {showPerfil ? 'opc' :""}/>
+      <button onClick={togglePerfil}>hola</button>
     </div>
   )
 }

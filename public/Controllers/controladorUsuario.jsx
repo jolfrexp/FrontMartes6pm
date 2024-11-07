@@ -1,3 +1,6 @@
+import buscarUsuario from "../../src/services/serviciosUsuario.jsx"
+
+
 // //Objetivo: recoger los datos de un formulario
 // //utilizando jsx
 // //1.-a cada input, select, textarea del form
@@ -25,6 +28,7 @@
 // })
 //Objetivo: Renderizar Datos que vienen del back
 //1.-se queman los datos(Mock)
+buscarUsuario()
 let usuarios = [
     {id:30,nombre:"Jolfre",correo:"jolfre@gmail.com",fechaRegistro:"09-10-24"},
     {id:43,nombre:"Andrea",correo:"Andrea@gmail.com",fechaRegistro:"04-02-23"},

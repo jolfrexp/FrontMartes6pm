@@ -1,47 +1,26 @@
-import React, { useEffect, useRef } from 'react'
+import React, { useRef, useState } from 'react'
 import logoM from '../assets/mail.svg'
 import logoK from '../assets/key-fill.svg'
 import logoU from '../assets/person-circle.svg'
-import { Link } from 'react-router-dom'
 import Swal from 'sweetalert2'
-function Register({toggleRegister,toggleLogin}) {
-  let usuarios = [
-    {id:30,nombre:"Jolfre",correo:"jolfre@gmail.com",fechaRegistro:"09-10-24"},
-    {id:43,nombre:"Andrea",correo:"Andrea@gmail.com",fechaRegistro:"04-02-23"},
-    {id:54,nombre:"Jose",correo:"Jose@gmail.com",fechaRegistro:"03-02-23"}
-]
-usuarios.map((usuario,id)=>{
- console.log(usuario)
- console.log(id)
- console.log(usuario.id)
- console.log(usuario.correo)
- console.log(usuario.nombre)
- console.log(usuario.fechaRegistro)
-})
-  const miElementRef = useRef(null)
-  let nombre = document.getElementById("nombre")
-  let edad = document.getElementById("edad")
-  let ciudad = document.getElementById("ciudad")
-  let telefono = document.getElementById("telefono")
-  let correo = document.getElementById("correo")
-  let contraseña = document.getElementById("contraseña")
-  const manejarSubmit = (e)=>{
-    e.preventDefault()
-    console.log("submit evitado")
-    let objetoEnvioDatosUsuario={
-      nombre: nombre.value,
-      edad: edad.value,
-      ciudad:ciudad.value,
-      telefono: telefono.value,
-      correo: correo.value,
-      contraseña: contraseña.value
+import { useForm } from 'react-hook-form'
+import { UsuarioPost } from '../services/servicioUsuario'
+function Register({toggleRegister,toggleLogin}){
+  let {register,handleSubmit, formState:{errors}} = useForm() 
+  let onSubmited= async (data)=>{
+    data.edad = parseInt(data.edad,10)
+    data.fechaRegistro = new Date().toISOString().split('T')[0]
+    try{
+      const response = await UsuarioPost(data) 
+      console.log(response)
+      toggleRegister()
+      Swal.fire({
+        title: "Usuario Registrado",
+        text: " Bienvenid@!: " + data.nombre,
+        icon: 'success'})
+    }catch(e){
+      console.error(e)
     }
-    console.log(objetoEnvioDatosUsuario)
-        Swal.fire({
-          title: "Good job!",
-          text: "You clicked the button",
-          icon: 'success'
-        })
   }
   const toggleLogin2 = () =>{
       toggleRegister()
@@ -50,36 +29,36 @@ usuarios.map((usuario,id)=>{
   return (
     <div className='login-sidebar2 animate__animated animate__fadeInUp'>
       <h2>Registro</h2>
-      <form onSubmit={manejarSubmit} className='formulario'>
+      <form className='formulario' onSubmit={handleSubmit(onSubmited)}>
         <div className="user">
           <label><img src={logoU} alt=""  />Nombre</label>
-        </div><input type="text" id='nombre' placeholder='Name'required />
+        </div><input type="text" id='nombre' {...register('nombre',{require:true})} placeholder='Name'required />
         <div className="age">
           <label>Edad</label>
         </div>
-        <input type="number" placeholder='18' id='edad'/>
+        <input type="number" placeholder='18' {...register('edad',{require:true})} id='edad' required/>
         <div className="phone">
           <label>Telefono</label>
         </div>
-        <input type="text" placeholder='3211234322' id='telefono' />
+        <input type="text" placeholder='3211234322' {...register('telefono',{require:true})} id='telefono' required />
         <div className="mail">
         <label><img src={logoM} alt="" /> Correo Electronico:</label>
-        <div><input type="email" placeholder='Correo@Example.com' required id='correo'/></div>
+        <div><input type="email" placeholder='Correo@Example.com' {...register('correo',{require:true})} required id='correo'/></div>
         
         </div>
         <div className="key">
           <label><img src={logoK} alt="" /> Contraseña:</label>
           <div>
-          <input type="password" placeholder='Contraseña' required id='contraseña'/></div>
+          <input type="password" placeholder='Contraseña' {...register('contrasena',{require:true})} required id='contraseña'/></div>
         <div className="city">
           <label>Ciudad</label>
         </div>
-        <input type="text" placeholder='Medellin' id='ciudad' />
+        <input type="text" placeholder='Medellin' id='ciudad' {...register('ciudad',{require:true})} required />
         </div>
         <div className="botones">
-        <button type='submit' className='button p2' ref={miElementRef} id='botonRegistro'>Registrar</button>
-        <Link className='button p2' onClick={toggleRegister}>Cerrar</Link>
-        <Link className='button p2' onClick={toggleLogin2}>Login</Link>
+        <button type='submit' className='button p'  id='botonRegistro'>Registrar</button>
+        <button className='button p' onClick={toggleRegister}>Cerrar</button>
+        <button className='button p' onClick={toggleLogin2}>Login</button>
         </div>
         
       </form>

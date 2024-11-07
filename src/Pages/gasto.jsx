@@ -6,7 +6,6 @@ function Gasto({gastos,id}) {
     <div>
      <ul className='home rt'>
       <li>{id}</li>
-      <li>{gastos.nombre}</li>
       <li>{gastos.descripcion}</li>
       <li>{gastos.monto}</li>
       </ul> 

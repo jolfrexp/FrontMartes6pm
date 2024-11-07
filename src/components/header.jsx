@@ -1,9 +1,9 @@
 import React from 'react'
 import logo from '../assets/logo.png'
-function Header() {
+function Header(props) {
   return (
     <>
-    <header>
+    <header className={props.class}>
       <div className="Content">
         <div className="contenedor_logo">
           <img src={logo} alt="" />

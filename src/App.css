@@ -1,6 +1,7 @@
 *{
   padding: 0;
   margin: 0;
+  font-family: "Merriweather", serif;
 }
 header{
   width: 100%;
@@ -135,6 +136,61 @@ footer a{
   background-color: #eee8a9;
   color:#02665c;
 }
+.perfil{
+  position:absolute;
+  width: 35%;
+  margin-left: 60%;
+  text-align: center;
+  margin-top: 1%;
+  border-radius: 8px;
+  padding: 20px;
+  z-index: 1000;
+  box-shadow: 0 4px 8px black;
+  pointer-events:auto;
+}
+.opc {
+  opacity: 0.2;
+  pointer-events: none;
+}
+.button-perfil{
+  background-color: #eee8a9;
+  color:#009585;
+  border: none;
+  margin-top: 11%;
+  font-size: 100%;
+  cursor: pointer;
+}
+.ml{
+  margin-left: 20%;
+}
+.flex{
+  display: flex;
+  margin-top: 10%;
+}
+.flex h3{
+  margin-left: 37%;
+}
+.flex2{
+  display: flex;
+  margin-top: 10%;
+}
+.flex2 h3{
+  margin-left: 20%;
+}
+.flex3{
+  display: flex;
+  margin-top: 10%;
+}
+.flex3 h3{
+  margin-left: 30%;
+}
+.img{
+  margin-left: -11%;
+  margin-top: 4%;
+}
+.img img{
+  margin-left: 10%;
+}
 main{
   width: 100%;
   text-align: center;
@@ -182,6 +238,9 @@ main{
 .botones1 Link{
   text-decoration: none;
 }
+.mt{
+  margin-top: 10%;
+}
 .btns button{
   width: 20%;
   height: 40px;
@@ -194,8 +253,8 @@ main{
   margin-left: 18%;
 }
 .botones .button{
-  width: 50%;
-  margin-left: 12%;
+  width: 24%;
+  /* margin-left: 12%; */
 }
 input{
   width: 60%;
@@ -207,7 +266,9 @@ input{
 }
 .p2{
   color: #eee8a9;
+  background-color: #009585;
   text-decoration: none;
+  margin-left: 1%;
 }
 .rt{
   width: 100%;
