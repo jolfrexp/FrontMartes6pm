@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import Header from '../components/header'
 import Nav from '../components/nav'
 import Footer from '../components/footer'
@@ -26,6 +26,7 @@ function Home() {
   const toggleMetodo = ()=>{
     setShowMetodoDePago(!showMetodoDePago)
   }
+  useEffect(()=>{console.log(infoUsuario)},[infoUsuario])
   const ingresos = 610512;
   const gastos = 482343;
   const balance = ingresos - gastos;
@@ -48,7 +49,6 @@ function Home() {
       {showMetodoDePago ? <div className="MDP"> <MetodosDePago toggleMetodo={toggleMetodo}/></div> :""}
       {showFactura ? <div className="FTR"> <FacturaIn toggleMetodo={toggleMetodo}/></div> :""}
       <Footer class = {showPerfil ? 'opc' :""}/>
-      <button onClick={togglePerfil}>hola</button>
     </div>
   )
 }

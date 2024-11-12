@@ -20,6 +20,17 @@ async function UsuarioPost(datos) {
   }
   
 }
+async function userLogin(datos) {
+  try{
+    const response = await axios.post("http://127.0.0.1:8000/login",datos)
+    return response.data
+  }catch(e){
+    console.error(e)
+    throw e
+  }
+  
+}
 
-export {UsuarioGet,UsuarioPost}
+
+export {UsuarioGet,UsuarioPost,userLogin}
 

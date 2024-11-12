@@ -3,53 +3,38 @@ import logoM from '../assets/mail.svg'
 import logoK from '../assets/key-fill.svg'
 import { useForm } from 'react-hook-form'
 import Swal from 'sweetalert2'
-import { UsuarioGet } from '../services/servicioUsuario'
 import { usuarioContext } from './usuarioProvider.jsx'
 import { useNavigate } from 'react-router-dom'
-
+import { userLogin } from '../services/servicioUsuario'
 function Login({toggleLogin,toggleRegister}) {
   let navigate = useNavigate()
-  const [datosObtenidos,setDatosObtenidos] = useState({})
-  let {setInfoUsuario} = useContext(usuarioContext)
+  let {infoUsuario,setInfoUsuario} = useContext(usuarioContext)
   let {register,handleSubmit, formState:{errors}} = useForm()     
-useEffect(()=>{
-  const fetchDatos= async ()=>{
-    try{
-      const datos = await UsuarioGet()
-      setDatosObtenidos(datos)
+  useEffect(()=>{if(infoUsuario != null){
+    console.log(infoUsuario)
+    if(infoUsuario.nombre != "R"){
+      Swal.fire({
+        title: "Sesion iniciada",
+        text: " Bienvenido/a: " + infoUsuario.nombre,
+        icon: 'success'})
+        navigate("/Home")
+  }else{
+    Swal.fire({
+      title: "Error",
+      text: "Las credenciales no son correctas",
+    })
+  }
+}},[infoUsuario])
+let onSubmited=async(data)=>{
+  try{
+      const datos = await userLogin(data)
+      setInfoUsuario(datos)
     }catch(e){
       console.error(e)
     }  
-  }
-    fetchDatos()
-},[])
-let onSubmited=(data)=>{
-    let log = false
-    let i=0
-    while(i<datosObtenidos.length){
-      if(data.correo == datosObtenidos[i].correo){
-        if(data.contrasena == datosObtenidos[i].contrasena){
-          log = true
-        }
-        if(log){
-          setInfoUsuario(datosObtenidos[i])
-          Swal.fire({
-            title: "Sesion iniciada",
-            text: " Bienvenido/a: " + datosObtenidos[i].nombre,
-            icon: 'success'})
-        navigate("/Home")
-        }else{
-          Swal.fire({
-            title: datosObtenidos[i].nombre,
-            text: "Tu contraseña no es la correcta,por favor vuelve a intentar",
-            icon: "error"
-      })
-    }
-      }
-      i++
-    }
     
 }
+
   const toggleRegister2 = () =>{
       toggleRegister()
       toggleLogin()
@@ -71,12 +56,12 @@ let onSubmited=(data)=>{
       <form className='formulario' onSubmit={handleSubmit(onSubmited)}>
         <div className="mail">
         <label><img src={logoM} alt="" /> Correo Electronico:</label>
-        <div><input type="email" {...register('correo',{require:true})} placeholder='Correo@Example.com' id='email' value={correo} onChange={(e)=>{setCorreo(e.target.value)}} required/></div>
+        <div><input type="email" {...register('user',{require:true})} placeholder='Correo@Example.com' id='email' value={correo} onChange={(e)=>{setCorreo(e.target.value)}} required/></div>
         
         </div>
         <div className="key">
           <label><img src={logoK} alt="" /> Contraseña:</label>
-          <div><input type="password" {...register('contrasena',{require:true})} placeholder='Contraseña' id='Password' value={password} onChange={(e)=>{setPassword(e.target.value)}} required /></div>
+          <div><input type="password" {...register('password',{require:true})} placeholder='Contraseña' id='Password' value={password} onChange={(e)=>{setPassword(e.target.value)}} required /></div>
           
         </div>
         <div className="botones">

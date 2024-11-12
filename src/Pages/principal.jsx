@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState,useEffect } from 'react'
 import Header from '../components/header'
 import Nav from '../components/nav'
 import img1 from "../assets/ahorro.png"
@@ -10,7 +10,6 @@ import avatar3 from "../assets/avatar3.png"
 import Footer from '../components/footer'
 import Login from '../components/Login'
 import Register from '../components/Register'
-
 function Principal() {
   const [showLogin,setShowLogin] = useState(false)
   const [showRegister,setShowRegister] = useState(false)
