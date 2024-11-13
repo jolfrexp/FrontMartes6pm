@@ -15,7 +15,7 @@ function Facturas() {
   return (
     <>
     <Header/>
-      <Nav sel4="sec" sel5="sel" sel1 ="sec" sel2 ="sec" sel3 ="sec" n5="n" sesion="Cerrar sesion" facturas="Facturas" register= "Jolfre gonzalez"
+      <Nav sel4="sec" sel5="sel" sel1 ="sec" sel2 ="sec" sel3 ="sec" n5="n" sesion="Cerrar sesion" facturas="Facturas" register= "?"
       ingresos = "Ingresos" gastos= "Gastos" home="Home"/>
       <ul className='home rt'>
         <li className='animate__animated animate__fadeInDown'>Id</li>

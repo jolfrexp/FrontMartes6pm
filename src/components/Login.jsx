@@ -6,12 +6,12 @@ import Swal from 'sweetalert2'
 import { usuarioContext } from './usuarioProvider.jsx'
 import { useNavigate } from 'react-router-dom'
 import { userLogin } from '../services/servicioUsuario'
-function Login({toggleLogin,toggleRegister}) {
+function Login({toggleLogin,toggleRegister,onLogin}) {
   let navigate = useNavigate()
   let {infoUsuario,setInfoUsuario} = useContext(usuarioContext)
   let {register,handleSubmit, formState:{errors}} = useForm()     
   useEffect(()=>{if(infoUsuario != null){
-    console.log(infoUsuario)
+    onLogin()
     if(infoUsuario.nombre != "R"){
       Swal.fire({
         title: "Sesion iniciada",

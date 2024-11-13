@@ -14,7 +14,7 @@ function Ingresos() {
   return (
     <div>
       <Header/>
-      <Nav sel2 ="sec" sel1= "sec"sel3 ="sel" sel4 ="sec" sel5="sec" facturas="Facturas" n3="n" home= "Home" ingresos="Ingresos" gastos="Gastos" register="Jolfre Gonzalez" sesion="Cerrar sesion"/>
+      <Nav sel2 ="sec" sel1= "sec"sel3 ="sel" sel4 ="sec" sel5="sec" facturas="Facturas" n3="n" home= "Home" ingresos="Ingresos" gastos="Gastos" register="?"/>
       <ul className='home rt'>
         <li className='animate__animated animate__fadeInLeft'>Id</li>
         <li className='animate__animated animate__fadeInDown'>Descripcion</li>

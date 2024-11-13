@@ -10,7 +10,7 @@ import avatar3 from "../assets/avatar3.png"
 import Footer from '../components/footer'
 import Login from '../components/Login'
 import Register from '../components/Register'
-function Principal() {
+function Principal({onlogin}) {
   const [showLogin,setShowLogin] = useState(false)
   const [showRegister,setShowRegister] = useState(false)
   const toggleRegister = () =>{
@@ -98,7 +98,7 @@ function Principal() {
       </div>}
       
       
-        {showLogin ? <div className="Inicio"><Login toggleLogin={toggleLogin} toggleRegister={toggleRegister}/>
+        {showLogin ? <div className="Inicio"><Login onLogin={onlogin} toggleLogin={toggleLogin} toggleRegister={toggleRegister}/>
         </div> : ""}
         {showRegister ? <div className="registro"> <Register toggleRegister={toggleRegister} toggleLogin={toggleLogin}/></div> :""}
       

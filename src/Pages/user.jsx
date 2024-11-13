@@ -3,9 +3,8 @@ import { usuarioContext } from '../components/usuarioProvider'
 import img1 from '../assets/person-circle.svg'
 import img2 from '../assets/mail.svg'
 import img3 from '../assets/key-fill.svg'
-function User({togglePerfil}) {
-    let {infoUsuario} =useContext(usuarioContext)
-    console.log(infoUsuario)
+function User({togglePerfil,onLogin}){
+    let {infoUsuario} = useContext(usuarioContext)
   return (
     <>  
         <div className='home perfil animate__animated animate__fadeInRight'>
@@ -43,9 +42,8 @@ function User({togglePerfil}) {
             </div>
 
             <div className="botones mt">
-                <button  className='button p2' disabled>Modificar Perfil</button>
-                <button onClick={togglePerfil} className='button p2'>Salir</button>
-                <button className='button p2'>Cerrar Sesion</button>
+                <button onClick={togglePerfil} className='button p2'>Cerrar</button>
+                <button onClick={onLogin} className='button p2'><a href="/Home">LogOut</a></button>
             </div>
             
         </div>
