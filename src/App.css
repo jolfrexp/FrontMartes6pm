@@ -306,3 +306,74 @@ a{
   text-decoration: none;
   color: #eee8a9;
 }
+/* Dashboard */
+.dashboard{
+  color: #8eb5ff;
+  background-color:  #F2F2F2;
+}
+.graficaUsuarios{
+  width: 30%;
+}
+.graficaUsuarios2{
+  width: 40%;
+}
+.DF{
+  display: flex;
+}
+.navD{
+  color: #8eb5ff;
+  background-color: #F2F2F2;
+  text-align: center;
+  margin-top: 2%;
+  margin-left: 25%;
+}
+.navD ul li{
+  margin-top: 1.5%;
+  margin-left: 18%;
+}
+.det{
+  color:#8eb5ff;
+}
+.det:hover{
+  color: #eee8a9;
+}
+.datos{
+  position:absolute;
+  width: 35%;
+  margin-left: 50%;
+  text-align: center;
+  margin-top: 5%;
+  border-radius: 8px;
+  padding: 20px;
+  z-index: 1000;
+  box-shadow: 0 4px 8px black;
+  pointer-events:auto;
+  gap: 30%;
+}
+.MT{
+  margin-top: 6%;
+}
+.ML{
+  margin-left: 2%;
+}
+.dato{
+  gap: 50%;
+  background-color:#8eb5ff;
+  color: black;
+}
+.dato1{
+  gap: 47%;
+  background-color: #eee8a9;
+  color: black;
+}
+.dato2{
+  gap: 44%;
+  background-color: #f888ef;
+  color: black;
+}
+.dato3{
+  gap: 44%;
+  background-color: #0233d6;
+  color: white;
+}
+/* Dashboard */

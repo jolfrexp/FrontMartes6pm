@@ -1,4 +1,5 @@
 import Home from './Pages/home'
+import Dashboard from './Pages/dashboard'
 import Principal from './Pages/principal'
 import './App.css'
 import 'animate.css'
@@ -28,6 +29,7 @@ function App() {
       <Route path='/Gastos' element = {isAutorized?<Gastos/>:<Navigate to="/"/>}/>
       <Route path='/Ingresos' element = {isAutorized?<Ingresos/>:<Navigate to="/"/>}/>
       <Route path='/Facturas' element={isAutorized?<Facturas/>:<Navigate to="/"/>}/>
+      <Route path='/Dashboard/:id' element={isAutorized?<Dashboard/>:<Navigate to="/"/>}/>
       <Route path='*' element={<NotFound/>}/>
     </Routes>
     </UsuarioProvider>

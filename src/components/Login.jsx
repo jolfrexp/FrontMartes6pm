@@ -12,10 +12,19 @@ function Login({toggleLogin,toggleRegister,onLogin}) {
   let {register,handleSubmit, formState:{errors}} = useForm()     
   useEffect(()=>{if(infoUsuario != null){
     onLogin()
-    if(infoUsuario.nombre != "R"){
+    if(infoUsuario.correo == "jolfre@gmail.com"){
       Swal.fire({
         title: "Sesion iniciada",
-        text: " Bienvenido/a: " + infoUsuario.nombre,
+        text: " Bienvenido Admin: " + infoUsuario.nombre,
+        icon: 'success',
+        timer:1000,
+      showConfirmButton:false})
+        navigate("/Dashboard/1")
+    }
+    else if(infoUsuario.nombre != "R"){
+      Swal.fire({
+        title: "Sesion iniciada",
+        text: " Bienvenid@: " + infoUsuario.nombre,
         icon: 'success'})
         navigate("/Home")
   }else{
