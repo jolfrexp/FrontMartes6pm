@@ -4,9 +4,9 @@ function Factura({fac,id}) {
   return (
     <div>
      <ul className='home rt'>
-      <li>{fac.id}</li>
-      <li>{fac.fecha}</li>
-      <li>{fac.monto}</li>
+      <li className='li'>{id+1}</li>
+      <li className='li'>{fac.fecha}</li>
+      <li className='li'>{fac.monto}</li>
       </ul> 
     </div>
   )

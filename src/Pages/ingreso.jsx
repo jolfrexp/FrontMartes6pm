@@ -4,9 +4,9 @@ function Ingreso({ingreso,id}) {
   return (
     <>
      <ul className='home rt'>
-      <li>{id}</li>
-      <li>{ingreso.descripcion}</li>
-      <li>{ingreso.monto}</li>
+      <li className='li'>{id+1}</li>
+      <li className='li'>{ingreso.descripcion}</li>
+      <li className='li'>{ingreso.monto}</li>
       </ul> 
     </>
   )

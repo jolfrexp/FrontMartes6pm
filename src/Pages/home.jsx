@@ -7,7 +7,7 @@ import Categoria from '../components/categoria'
 import MetodosDePago from '../components/metodosDePago'
 import FacturaIn from '../components/facturaIn'
 import { usuarioContext } from '../components/usuarioProvider'
-import User from './user'
+import User from '../components/user'
 function Home({onLogin}) {
   let {infoUsuario} = useContext(usuarioContext)
   const [showCategoria,setShowCategoria] = useState(false)
@@ -34,7 +34,7 @@ function Home({onLogin}) {
     <div className='home'>
       <Header class = {showPerfil ? 'opc' :""}/>
       {showPerfil ?<User onLogin={onLogin} togglePerfil={togglePerfil}/>:"" }
-      <Nav class ={showPerfil ? 'opc' :""} sel4="sec" sel5="sec" sel1 ="sel" sel2 ="sec" sel3 ="sec" n1="n" sesion="Cerrar sesion" facturas="Facturas" register= {infoUsuario.nombre}
+      <Nav class ={showPerfil ? 'opc' :""} sel4="sec li" sel5="sec li" sel1 ="sel li" sel2 ="sec li" sel3 ="sec li" n1="n" sesion="Cerrar sesion" facturas="Facturas" register= {infoUsuario.nombre}
       ingresos = "Ingresos" gastos= "Gastos" home="Home" togglePerfil={togglePerfil}/>
       <h1 className={showPerfil ? 'opc' :"p"}>Balance general</h1>
       <main className={showPerfil ? 'opc' :"animate__animated animate__fadeInUp"}>

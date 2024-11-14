@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Chart as ChartJS,CategoryScale,LinearScale,BarElement,Title,Filler,Tooltip,PointElement,LineElement,Legend,ArcElement } from 'chart.js'
 import { Bar, Doughnut } from 'react-chartjs-2'
 ChartJS.register(
@@ -13,27 +13,20 @@ ChartJS.register(
     PointElement,
     Filler,
 )
-function GraphicD({activos,inactivos,femenino,masculino}) {
-    const data = {
-        labels : ['Activos','Inactivos','Femeninos','Masculinos'],
-        datasets:[
-            {
-             label:'',
-             data: [activos,inactivos,femenino,masculino],
-             backgroundColor:[
-                '#FFEB99',
-                '#8eb5ff',
-                '#f888ef',
-                '#0233d6'
-                
-             ]
-            //  borderColor:[
-            //     'rgba(75, 192, 192, 1)',
-            //     'rgba(255, 99, 132, 1)',
-            //     'rgba(54, 162, 235, 1)'
-            //  ],
-            //  borderWidth: 1   
-        }]
+function GraphicD({valores,descripciones}) {
+  const data = {
+    labels : descripciones,
+    datasets:[
+        {
+         label:'',
+         data: valores,
+         backgroundColor:[
+            '#FFEB99',
+            '#8eb5ff',
+            '#f888ef',
+            '#0233d6'  
+         ] 
+    }]
     }
     const options = {
         responsive: true,

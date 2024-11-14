@@ -1,5 +1,5 @@
 import React, { useContext } from 'react'
-import { usuarioContext } from '../components/usuarioProvider'
+import { usuarioContext } from './usuarioProvider'
 import img1 from '../assets/person-circle.svg'
 import img2 from '../assets/mail.svg'
 import img3 from '../assets/key-fill.svg'
