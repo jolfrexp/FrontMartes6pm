@@ -26,6 +26,9 @@ function Nav(props) {
           <li>
             <button className='button-perfil' onClick={props.togglePerfil}><p>{props.register}</p></button>
           </li>
+          <li>
+            <button className='button-perfil' onClick={props.togglePerfil2}><p>{props.register2}</p></button>
+          </li>
         </ul>
     </nav>
     </>

@@ -6,12 +6,15 @@ import Swal from 'sweetalert2'
 import { usuarioContext } from './usuarioProvider.jsx'
 import { useNavigate } from 'react-router-dom'
 import { userLogin } from '../services/servicioUsuario'
+import img1 from '../assets/person-circle.svg'
+import img2 from '../assets/mail.svg'
+import img3 from '../assets/key-fill.svg'
 function Login({toggleLogin,toggleRegister,onLogin}) {
   let navigate = useNavigate()
   let {infoUsuario,setInfoUsuario} = useContext(usuarioContext)
   let {register,handleSubmit, formState:{errors}} = useForm()     
   useEffect(()=>{if(infoUsuario != null){
-    onLogin()
+    
     if(infoUsuario.correo == "jolfre@gmail.com"){
       Swal.fire({
         title: "Sesion iniciada",
@@ -19,6 +22,7 @@ function Login({toggleLogin,toggleRegister,onLogin}) {
         icon: 'success',
         timer:1000,
       showConfirmButton:false})
+      onLogin()
         navigate("/Dashboard/1")
     }
     else if(infoUsuario.nombre != "R"){
@@ -26,7 +30,9 @@ function Login({toggleLogin,toggleRegister,onLogin}) {
         title: "Sesion iniciada",
         text: " Bienvenid@: " + infoUsuario.nombre,
         icon: 'success'})
+        onLogin()
         navigate("/Home")
+
   }else{
     Swal.fire({
       title: "Error",
@@ -43,7 +49,6 @@ let onSubmited=async(data)=>{
     }  
     
 }
-
   const toggleRegister2 = () =>{
       toggleRegister()
       toggleLogin()
@@ -60,28 +65,26 @@ let onSubmited=async(data)=>{
   },[correo,password])
 
   return (
-    <div className='login-sidebar animate__animated animate__fadeInUp'>
-      <h2>Iniciar sesion</h2>
-      <form className='formulario' onSubmit={handleSubmit(onSubmited)}>
-        <div className="mail">
-        <label><img src={logoM} alt="" /> Correo Electronico:</label>
-        <div><input type="email" {...register('user',{require:true})} placeholder='Correo@Example.com' id='email' value={correo} onChange={(e)=>{setCorreo(e.target.value)}} required/></div>
-        
-        </div>
-        <div className="key">
-          <label><img src={logoK} alt="" /> Contraseña:</label>
-          <div><input type="password" {...register('password',{require:true})} placeholder='Contraseña' id='Password' value={password} onChange={(e)=>{setPassword(e.target.value)}} required /></div>
-          
-        </div>
+      <div className='Inicio animate__animated animate__fadeInDown'>
+            <h1>Login</h1>
+            <form className='formulario' onSubmit={handleSubmit(onSubmited)}>
+                <div className="mail">
+                  <label>Correo Electronico:</label>
+                <div>
+                  <input type="email" {...register('user',{require:true})} placeholder='Correo@Example.com' id='email' value={correo} onChange={(e)=>{setCorreo(e.target.value)}} required/></div>
+                  </div>
+                <div className="key">
+                  <label>Contraseña:</label>
+                <div>
+                  <input type="password" {...register('password',{require:true})} placeholder='Contraseña' id='Password' value={password} onChange={(e)=>{setPassword(e.target.value)}} required /></div>
+                </div>
         <div className="botones">
         {dataVisible && <button className='button p'>Ingresar</button>}
         <button className='button p' onClick={toggleLogin}>Cerrar</button>
         <button className='button p' onClick={toggleRegister2} >Registro</button>
         </div>
-        
-      </form>
-      
-    </div>
+        </form>
+        </div>    
   )
 }
 

@@ -27,11 +27,11 @@ function Register({toggleRegister,toggleLogin}){
       toggleLogin()
   }
   return (
-    <div className='login-sidebar2 animate__animated animate__fadeInUp'>
+    <div className='Inicio animate__animated animate__fadeInDown'>
       <h2>Registro</h2>
       <form className='formulario' onSubmit={handleSubmit(onSubmited)}>
         <div className="user">
-          <label><img src={logoU} alt=""  />Nombre</label>
+          <label>Nombre</label>
         </div><input type="text" id='nombre' {...register('nombre',{require:true})} placeholder='Name'required />
         <div className="age">
           <label>Edad</label>
@@ -42,12 +42,12 @@ function Register({toggleRegister,toggleLogin}){
         </div>
         <input type="text" placeholder='3211234322' {...register('telefono',{require:true})} id='telefono' required />
         <div className="mail">
-        <label><img src={logoM} alt="" /> Correo Electronico:</label>
+        <label> Correo Electronico:</label>
         <div><input type="email" placeholder='Correo@Example.com' {...register('correo',{require:true})} required id='correo'/></div>
         
         </div>
         <div className="key">
-          <label><img src={logoK} alt="" /> Contraseña:</label>
+          <label>Contraseña:</label>
           <div>
           <input type="password" placeholder='Contraseña' {...register('contrasena',{require:true})} required id='contraseña'/></div>
         <div className="city">

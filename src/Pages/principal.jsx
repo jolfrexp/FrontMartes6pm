@@ -14,17 +14,35 @@ function Principal({onlogin}) {
   const [showLogin,setShowLogin] = useState(false)
   const [showRegister,setShowRegister] = useState(false)
   const toggleRegister = () =>{
-    setShowRegister(!showRegister)
-  }
+    if(showRegister){
+      setShowRegister(false)
+    }else{
+      setShowRegister(true)
+      setShowLogin(false)
+    }
+  } 
   const toggleLogin = () =>{
-    setShowLogin(!showLogin)
+    
+    if(showLogin){
+      setShowLogin(false)
+    }else{
+      setShowLogin(true)
+      setShowRegister(false)
+    }
   }
  
   return (
     <div className="principal">
       <Header/>
-      <Nav ecofin="EcoFin" sel4 ="sel" sel1= "sec"sel2 ="sec" sel3 ="sec" n4="n"/>
+      <Nav ecofin="EcoFin" sel4 ="sel li" sel1= "sec li"sel2 ="sec li" sel3 ="sec li" n4="n" register="Login" register2="Register" togglePerfil={toggleLogin} togglePerfil2={toggleRegister}/>
+      {showLogin || showRegister ?
       <div>
+        {showLogin && <div className=""><Login onLogin={onlogin} toggleLogin={toggleLogin} toggleRegister={toggleRegister}/>
+        </div>}
+        {showRegister ? <div className="registro"><Register toggleRegister={toggleRegister} toggleLogin={toggleLogin}/></div> :""}
+      </div> 
+       :
+        <div>
         <div className="imagenes">
           <div className="cont-img animate__animated animate__fadeInLeft ">
             <img src={img1}alt="" />
@@ -92,15 +110,8 @@ function Principal({onlogin}) {
         </div>
     
       </div>
-      {showLogin || showRegister ? "" :<div className="btns">
-        <button className='animate__animated animate__fadeInLeft' onClick={toggleLogin}>Ingresar</button>
-        <button className='animate__animated animate__fadeInRight' onClick={toggleRegister}>Registrarse</button>
-      </div>}
+        }
       
-      
-        {showLogin ? <div className="Inicio"><Login onLogin={onlogin} toggleLogin={toggleLogin} toggleRegister={toggleRegister}/>
-        </div> : ""}
-        {showRegister ? <div className="registro"> <Register toggleRegister={toggleRegister} toggleLogin={toggleLogin}/></div> :""}
       
       
       <Footer/>

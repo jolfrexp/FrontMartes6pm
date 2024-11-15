@@ -73,9 +73,9 @@ const  filteredUsers = search.filter((s)=>s.toLowerCase().includes(searchTerm.to
             }
         <div className='DF'>        
             <div className="graficaUsuarios ML">
-                <GraphicD valores={[1,7,3,4]} descripciones={[]}/>  
+                <GraphicD valores={[1,users.length,3,4]} descripciones={[]}/>  
             </div>
-                <div className='datos'>
+                <div className={searchTerm ? "datos opc":"datos"}>
                     <h1>Usuarios</h1>
                 <div className="dato MT DF"><p className='ML'>Usuarios Activos:</p><p>{users.length}</p></div>
                 <div className="dato1 MT DF"><p className=''>Usuarios Inactivos:</p><p>1</p> </div>
@@ -103,10 +103,10 @@ const  filteredUsers = search.filter((s)=>s.toLowerCase().includes(searchTerm.to
             <div className="graficaUsuarios ML">
              <GraphicD valores={[18000,50000,32000]} descripciones={["Balance","Ingresos","Gastos"]}/>
             </div>
-            <div className='userSelect animate__animated animate__fadeInRight'>
+            <div className='userSelect animate__animated animate__fadeInDown'>
             <h1>User ID </h1>
             <h2>{select.id}</h2>
-            <div className='img'><img src={img1} alt="" /><img src={img2} alt="" /><img src={img3} alt="" /></div>
+            {/* <div className='img'><img src={img1} alt="" /><img src={img2} alt="" /><img src={img3} alt="" /></div> */}
             <div className='flex'>
                 <h4>Nombre:</h4>
                 <h3>{select.nombre}</h3>    
