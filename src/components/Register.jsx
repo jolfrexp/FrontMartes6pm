@@ -27,7 +27,7 @@ function Register({toggleRegister,toggleLogin}){
       toggleLogin()
   }
   return (
-    <div className='Inicio animate__animated animate__fadeInDown'>
+    <div className='Inicio '>
       <h2>Registro</h2>
       <form className='formulario' onSubmit={handleSubmit(onSubmited)}>
         <div className="user">

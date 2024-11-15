@@ -65,7 +65,7 @@ let onSubmited=async(data)=>{
   },[correo,password])
 
   return (
-      <div className='Inicio animate__animated animate__fadeInDown'>
+      <div className='Inicio'>
             <h1>Login</h1>
             <form className='formulario' onSubmit={handleSubmit(onSubmited)}>
                 <div className="mail">

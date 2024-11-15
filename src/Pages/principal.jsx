@@ -37,9 +37,9 @@ function Principal({onlogin}) {
       <Nav ecofin="EcoFin" sel4 ="sel li" sel1= "sec li"sel2 ="sec li" sel3 ="sec li" n4="n" register="Login" register2="Register" togglePerfil={toggleLogin} togglePerfil2={toggleRegister}/>
       {showLogin || showRegister ?
       <div>
-        {showLogin && <div className=""><Login onLogin={onlogin} toggleLogin={toggleLogin} toggleRegister={toggleRegister}/>
+        {showLogin && <div  className="animate__animated animate__bounceInLeft"><Login onLogin={onlogin} toggleLogin={toggleLogin} toggleRegister={toggleRegister}/>
         </div>}
-        {showRegister ? <div className="registro"><Register toggleRegister={toggleRegister} toggleLogin={toggleLogin}/></div> :""}
+        {showRegister && <div className="animate__animated animate__bounceInRight"><Register toggleRegister={toggleRegister} toggleLogin={toggleLogin}/></div>}
       </div> 
        :
         <div>
