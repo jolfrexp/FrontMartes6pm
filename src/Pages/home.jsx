@@ -1,17 +1,13 @@
 import React, { useContext, useEffect, useState } from 'react'
-import Header from '../components/header'
-import Nav from '../components/nav'
-import Footer from '../components/footer'
-import Graphic from '../graficas/Graphic'
-import Categoria from '../components/categoria'
-import MetodosDePago from '../components/metodosDePago'
-import FacturaIn from '../components/facturaIn'
-import { usuarioContext } from '../components/usuarioProvider'
-import User from '../components/user'
+import Header from '../components/frontend/header'
+import Nav from '../components/frontend/nav'
+import Footer from '../components/frontend/footer'
+import Graphic from '../components/graficas/Graphic'
+import FacturaIn from '../components/frontend/facturaIn'
+import { usuarioContext } from '../components/providers/usuarioProvider'
+import User from '../components/frontend/user'
 function Home({onLogin}) {
   let {infoUsuario} = useContext(usuarioContext)
-  const [showCategoria,setShowCategoria] = useState(false)
-  const [showMetodoDePago,setShowMetodoDePago] =useState(false)
   const [showFactura,setShowFactura] = useState(false)
   const [showPerfil,setShowPerfil] = useState(false)
   const togglePerfil = () =>{
@@ -19,12 +15,6 @@ function Home({onLogin}) {
   }
   const toggleFactura = () =>{
       setShowFactura(!showFactura)
-  }
-  const toggleCategoria = () =>{
-    setShowCategoria(!showCategoria)
-  }
-  const toggleMetodo = ()=>{
-    setShowMetodoDePago(!showMetodoDePago)
   }
   useEffect(()=>{console.log(infoUsuario)},[infoUsuario])
   const ingresos = 610512;
@@ -40,14 +30,11 @@ function Home({onLogin}) {
       <main className={showPerfil ? 'opc' :"animate__animated animate__fadeInUp"}>
         <Graphic ingresos={ingresos} gastos={gastos} balance={balance}/>
       </main> 
-      {showCategoria || showMetodoDePago ? "" :<div className={showPerfil ? 'opc botones' :"botones"}>
+      <div className={showPerfil ? 'opc botones' :"botones"}>
         <button className='button p2' onClick={toggleFactura}>Ingresar Factura</button>
-        <button className='button p2' onClick={toggleCategoria}>Agregar Categoria</button>
-        <button className='button p2' onClick={toggleMetodo}>Agregar Metodo de pago</button>
-        </div>}
-      {showCategoria ? <div className="categoria"><Categoria toggleCategoria={toggleCategoria}/></div> :""}
-      {showMetodoDePago ? <div className="MDP"> <MetodosDePago toggleMetodo={toggleMetodo}/></div> :""}
-      {showFactura ? <div className="FTR"> <FacturaIn toggleMetodo={toggleMetodo}/></div> :""}
+        
+      </div>
+      {showFactura ? <div className="FTR"> <FacturaIn toggleMetodo={toggleFactura}/></div> :""}
       <Footer class = {showPerfil ? 'opc' :""}/>
     </div>
   )

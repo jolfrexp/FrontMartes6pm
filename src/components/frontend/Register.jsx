@@ -1,10 +1,7 @@
-import React, { useRef, useState } from 'react'
-import logoM from '../assets/mail.svg'
-import logoK from '../assets/key-fill.svg'
-import logoU from '../assets/person-circle.svg'
+import React from 'react'
 import Swal from 'sweetalert2'
 import { useForm } from 'react-hook-form'
-import { UsuarioPost } from '../services/servicioUsuario'
+import { UsuarioPost } from '../../services/servicioUsuario'
 function Register({toggleRegister,toggleLogin}){
   let {register,handleSubmit, formState:{errors}} = useForm() 
   let onSubmited= async (data)=>{

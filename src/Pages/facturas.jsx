@@ -1,9 +1,9 @@
 import React from 'react'
-import Header from '../components/header'
-import Nav from '../components/nav' 
-import Footer from '../components/footer'
+import Header from '../components/frontend/header'
+import Nav from '../components/frontend/nav' 
+import Footer from '../components/frontend/footer'
 import { Link } from 'react-router-dom'
-import Factura from '../components/factura'
+import Factura from '../components/frontend/factura'
 import { useState } from 'react'
 function Facturas() {
     const [facturasList,setGastosList] =useState([

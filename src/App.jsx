@@ -1,14 +1,14 @@
 import Home from './Pages/home'
-import Dashboard from './Pages/dashboard'
+import Dashboard from './Pages/admin/dashboard'
 import Principal from './Pages/principal'
 import './App.css'
 import 'animate.css'
 import { Routes,Route, Navigate } from 'react-router-dom'
 import Gastos from './Pages/gastos'
 import Ingresos from './Pages/ingresos'
-import NotFound from './components/NotFound'
+import NotFound from './components/frontend/NotFound'
 import Facturas from './Pages/facturas'
-import {UsuarioProvider} from './components/usuarioProvider'
+import {UsuarioProvider} from './components/providers/usuarioProvider'
 import {  useState } from 'react'
 function App() {
   const [isAutorized,setIsAutorized] = useState(false)

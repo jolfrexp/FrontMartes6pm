@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
-import Header from '../components/header'
-import Nav from '../components/nav'
+import Header from '../components/frontend/header'
+import Nav from '../components/frontend/nav'
 import Gasto from './gasto'
 import { Link } from 'react-router-dom'
-import Footer from '../components/footer'
+import Footer from '../components/frontend/footer'
 // import Swal from 'sweetalert2'
 function Gastos() {
   const [gastosList,setGastosList] =useState([

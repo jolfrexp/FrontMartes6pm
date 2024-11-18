@@ -1,9 +1,9 @@
 import React, {  useState } from 'react'
-import Header from '../components/header'
-import Nav from '../components/nav'
+import Header from '../components/frontend/header'
+import Nav from '../components/frontend/nav'
 import Ingreso from './ingreso'
 import { Link } from 'react-router-dom'
-import Footer from '../components/footer'
+import Footer from '../components/frontend/footer'
 function Ingresos() {
   let [ingresoList,setIngresoList] = useState([
     {nombre:"Nomina",descripcion:"Pago nomina 10 nov",monto: 475000},

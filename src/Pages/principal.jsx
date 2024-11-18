@@ -1,15 +1,15 @@
 import React, { useState,useEffect } from 'react'
-import Header from '../components/header'
-import Nav from '../components/nav'
+import Header from '../components/frontend/header'
+import Nav from '../components/frontend/nav'
 import img1 from "../assets/ahorro.png"
 import img2 from "../assets/gestion-de-proyectos.png"
 import img3 from "../assets/gdg.webp"
 import avatar1 from "../assets/avatar1.png"
 import avatar2 from "../assets/avatar2.png"
 import avatar3 from "../assets/avatar3.png"
-import Footer from '../components/footer'
-import Login from '../components/Login'
-import Register from '../components/Register'
+import Footer from '../components/frontend/footer'
+import Login from '../components/frontend/Login'
+import Register from '../components/frontend/Register'
 function Principal({onlogin}) {
   const [showLogin,setShowLogin] = useState(false)
   const [showRegister,setShowRegister] = useState(false)

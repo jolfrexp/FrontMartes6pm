@@ -1,10 +1,7 @@
 import React, { useEffect, useState } from 'react'
-import {GraphicD,GraphicE, GraphicF} from '../graficas/GraphicD'
-import { UsuarioGet } from '../services/servicioUsuario'
+import {GraphicD,GraphicE, GraphicF} from '../../components/graficas/GraphicD'
+import { UsuarioGet } from '../../services/servicioUsuario'
 import { Link, useParams } from 'react-router-dom'
-import img1 from '../assets/person-circle.svg'
-import img2 from '../assets/mail.svg'
-import img3 from '../assets/key-fill.svg'
 function Dashboard() {
     const [searchTerm,setSearchTerm] = useState('')
     let {id} = useParams()

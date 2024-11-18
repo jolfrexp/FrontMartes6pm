@@ -1,5 +1,5 @@
 import React from 'react'
-import { CategoriaPost } from '../services/serviciosCategoria'
+import { CategoriaPost } from '../../services/serviciosCategoria'
 import { useForm } from 'react-hook-form'
 import Swal from 'sweetalert2'
 function Categoria({toggleCategoria}) {

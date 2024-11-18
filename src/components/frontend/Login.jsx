@@ -1,14 +1,10 @@
 import React, { useContext,useEffect, useState } from 'react'
-import logoM from '../assets/mail.svg'
-import logoK from '../assets/key-fill.svg'
 import { useForm } from 'react-hook-form'
 import Swal from 'sweetalert2'
-import { usuarioContext } from './usuarioProvider.jsx'
+import { usuarioContext } from '../providers/usuarioProvider.jsx'
 import { useNavigate } from 'react-router-dom'
-import { userLogin } from '../services/servicioUsuario'
-import img1 from '../assets/person-circle.svg'
-import img2 from '../assets/mail.svg'
-import img3 from '../assets/key-fill.svg'
+import { userLogin } from '../../services/servicioUsuario.jsx'
+
 function Login({toggleLogin,toggleRegister,onLogin}) {
   let navigate = useNavigate()
   let {infoUsuario,setInfoUsuario} = useContext(usuarioContext)

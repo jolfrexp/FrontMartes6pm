@@ -20,4 +20,10 @@ async function MDPPost(datos) {
     }
     
 }
+async function MDPPut() {
+    
+}
+async function MDPDelete() {
+    
+}
 export {MDPGet,MDPPost}

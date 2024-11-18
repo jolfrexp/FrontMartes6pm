@@ -312,7 +312,7 @@ a{
 }
 /* Dashboard */
 .dashboard{
-  color: #8eb5ff;
+    /* color: #8eb5ff; */
   background-color:  #F2F2F2;
 }
 .graficaUsuarios{
@@ -326,7 +326,7 @@ a{
   display: flex;
 }
 .navD{
-  color: #8eb5ff;
+  /* color: #8eb5ff; */
   background-color: #F2F2F2;
   text-align: center;
   margin-top: 2%;
@@ -337,7 +337,7 @@ a{
   margin-left: 18%;
 }
 .det{
-  color:#8eb5ff;
+ color: black;
 }
 .det:hover{
   color: #eee8a9;

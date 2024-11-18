@@ -1,5 +1,5 @@
 import React from 'react'
-import { MDPPost } from '../services/serviciosMetodoPagos'
+import { MDPPost } from '../../services/serviciosMetodoPagos'
 import { useForm } from 'react-hook-form'
 import Swal from 'sweetalert2'
 function MetodosDePago({toggleMetodo}) {

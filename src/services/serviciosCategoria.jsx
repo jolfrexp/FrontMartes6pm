@@ -18,4 +18,10 @@ async function CategoriaPost(datos) {
     }
     
 }
+async function CategoriaPut() {
+    
+}
+async function CategoriaDelete() {
+    
+}
 export {CategoriaGet,CategoriaPost}
