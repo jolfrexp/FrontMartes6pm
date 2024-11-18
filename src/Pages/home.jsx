@@ -34,7 +34,7 @@ function Home({onLogin}) {
         <button className='button p2' onClick={toggleFactura}>Ingresar Factura</button>
         
       </div>
-      {showFactura ? <div className="FTR"> <FacturaIn toggleMetodo={toggleFactura}/></div> :""}
+      {showFactura ? <div className="FTR"> <FacturaIn toggleFactura={toggleFactura}/></div> :""}
       <Footer class = {showPerfil ? 'opc' :""}/>
     </div>
   )

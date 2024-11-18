@@ -29,7 +29,6 @@ ul{
   width: 50%;  
 }
 li{
-  
   list-style-type: none;
 }
 .li{
@@ -257,7 +256,7 @@ main{
   margin-left: 18%;
 }
 .botones .button{
-  width: 24%;
+  width: 16%;
   /* margin-left: 12%; */
 }
 input{
@@ -447,3 +446,16 @@ a{
   border: 1px solid #ccc;
 }
 /* Login and register */
+/* Factura in */
+.ulF{
+  flex-direction: column;
+  
+}
+.liF{
+ cursor: pointer;
+}
+.ingreso{
+  width: 100%;
+  background-color: #4a88fc;
+}
+/* Factura in */

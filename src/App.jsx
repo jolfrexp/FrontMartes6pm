@@ -8,21 +8,19 @@ import Gastos from './Pages/gastos'
 import Ingresos from './Pages/ingresos'
 import NotFound from './components/frontend/NotFound'
 import Facturas from './Pages/facturas'
-import {UsuarioProvider} from './components/providers/usuarioProvider'
+import { UsuarioProvider } from './components/providers/usuarioProvider'
+import { IngresoProvider } from './components/providers/ingresosProvider'
 import {  useState } from 'react'
 function App() {
   const [isAutorized,setIsAutorized] = useState(false)
   let handleLogin =()=>{
-    if(isAutorized == true){
-      setIsAutorized(false)
-    }else{
-      setIsAutorized(true)
-    }
+    setIsAutorized(!isAutorized)
   }
 
   return (
     <>
     <UsuarioProvider>
+      <IngresoProvider>
       <Routes>
       <Route path='/' element = {<Principal onlogin ={handleLogin}/>}/>
       <Route path='/Home' element = {isAutorized?<Home onlogin ={handleLogin}/>:<Navigate to="/"/>}/>
@@ -31,7 +29,8 @@ function App() {
       <Route path='/Facturas' element={isAutorized?<Facturas/>:<Navigate to="/"/>}/>
       <Route path='/Dashboard/:id' element={isAutorized?<Dashboard/>:<Navigate to="/"/>}/>
       <Route path='*' element={<NotFound/>}/>
-    </Routes>
+      </Routes>
+      </IngresoProvider>
     </UsuarioProvider>
     
     </>
