@@ -1,7 +1,7 @@
 import { createContext,useState } from "react"
 let gastosContex = createContext();
 function GastosProvider({children}) {
-    const [infoGastos,setInfoGastos] = useState("")
+    const [infoGastos,setInfoGastos] = useState([])
   return (
     <gastosContex.Provider value= {{infoGastos,setInfoGastos}}>
         {children}
@@ -9,4 +9,4 @@ function GastosProvider({children}) {
   )
 }
 
-export default {gastosContex,GastosProvider}
+export {gastosContex,GastosProvider}

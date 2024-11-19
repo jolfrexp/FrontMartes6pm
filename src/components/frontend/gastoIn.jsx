@@ -1,12 +1,13 @@
 import React,{useContext, useEffect, useState} from 'react'
 import { usuarioContext } from '../providers/usuarioProvider'
 import { useForm } from 'react-hook-form'
-import { ingresoContext } from '../providers/ingresosProvider'
+import { gastosContex } from '../providers/gastosProvider'
 import { CategoriaGet } from '../../services/serviciosCategoria'
 import { MDPGet } from '../../services/serviciosMetodoPagos'
-function IngresoIn({toggleIngreso}) {
-    let {infoIngreso,setInfoIngreso} = useContext(ingresoContext)
+function GastoIn({toggleGasto}) {
+    let {infoGastos,setInfoGastos} = useContext(gastosContex)
     let {register,handleSubmit, formState:{errors}} = useForm()
+
     const [menuCategoria,setMenuCategoria] = useState(0)
     const [categorias,setCategorias] = useState([])
     const [categoriaS,setCategoriaS] = useState(0)
@@ -18,8 +19,8 @@ function IngresoIn({toggleIngreso}) {
         data.metodo_id = metodoS
         data.categoria_id = categoriaS
         data.monto = parseInt(data.monto,10)
-        setInfoIngreso([...infoIngreso, data])
-        toggleIngreso()
+        setInfoGastos([...infoGastos, data])
+        toggleGasto()
     }
 
     const mostrarCat = ()=>{
@@ -62,8 +63,8 @@ function IngresoIn({toggleIngreso}) {
     },[])
   return (
     <div>
-      <form className='formularioI animate__animated animate__zoomIn ' onSubmit={handleSubmit(onSubmited)}>
-        <h1>Ingreso</h1>
+      <form className='formularioG animate__animated animate__zoomIn ' onSubmit={handleSubmit(onSubmited)}>
+        <h1>Gasto</h1>
         <hr />
         <div>
             <div>Descripcion:</div>
@@ -89,11 +90,11 @@ function IngresoIn({toggleIngreso}) {
         </div>
         <div className='botones'>
             <button className='button'>Agregar</button>
-            <button className='button' onClick={toggleIngreso}>Cancelar</button>  
+            <button className='button' onClick={toggleGasto}>Cancelar</button>  
         </div>
       </form>
     </div>
   )
 }
 
-export default IngresoIn
+export default GastoIn
