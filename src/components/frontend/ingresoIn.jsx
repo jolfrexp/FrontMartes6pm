@@ -18,6 +18,7 @@ function IngresoIn({toggleIngreso}) {
         data.metodo_id = metodoS
         data.categoria_id = categoriaS
         data.monto = parseInt(data.monto,10)
+        data.factura_id = 0
         setInfoIngreso([...infoIngreso, data])
         toggleIngreso()
     }
@@ -76,15 +77,15 @@ function IngresoIn({toggleIngreso}) {
         <div>
             <button type='button' onClick={mostrarCat}>Categoria</button>
             <ul className='ulF'>
-                {menuCategoria && categorias.map((data,index)=>(<li onClick={()=>selecCat(index)} key={index}>{data.nombreCategoria}</li>))}
-                {categoriaS != 0 ? <li>{`Categoria seleccionada: ${categorias[categoriaS].nombreCategoria}`}</li>:<li>Sin categoria</li>}
+                {menuCategoria !=0 && categorias.map((data,index)=>(<li className='liF2' onClick={()=>selecCat(index)} key={index}>{data.nombreCategoria}</li>))}
+                {categoriaS !=0 ? <li className='liF2'>{`Categoria seleccionada: ${categorias[categoriaS].nombreCategoria}`}</li>:<li className='liF2'>Categoria seleccionada: Sin categoria</li>}
             </ul>
         </div>
         <div>
             <button type='button' onClick={mostrarMet}>Metodo de pago</button>
             <ul className='ulF'>
-                {menuMetodo && metodos.map((data,index)=>(<li onClick={()=>selecMet(index)} key={index}>{data.nombreMetodo}</li>))}
-                {metodoS !=0 ? <li>{`Metodo de pago seleccionado: ${metodos[metodoS].nombreMetodo}`}</li>:<li>Sin Metodo de pago</li>}
+                {menuMetodo !=0 && metodos.map((data,index)=>(<li className='liF2' onClick={()=>selecMet(index)} key={index}>{data.nombreMetodo}</li>))}
+                {metodoS !=0 ? <li className='liF2'>{`Metodo de pago seleccionado: ${metodos[metodoS].nombreMetodo}`}</li>:<li className='liF2'>Metodo de pago seleccionado: Sin Metodo de pago</li>}
             </ul>
         </div>
         <div className='botones'>

@@ -256,7 +256,7 @@ main{
   margin-left: 18%;
 }
 .botones .button{
-  width: 16%;
+  width: 20%;
   /* margin-left: 12%; */
 }
 input{
@@ -465,7 +465,14 @@ a{
   
 }
 .liF{
- cursor: pointer;
+  cursor: pointer;
+  margin-left: 50%;
+  border: 1px solid #009585;
+  border-radius: 10px;
+  width: 100%;
+}
+.liF2{
+  cursor: pointer;
  margin-left: 50%;
  border: 1px solid #009585;
  border-radius: 10px;
@@ -509,7 +516,7 @@ a{
   width: 100%;
   margin-left: 60%;
   text-align: center;
-  margin-top: -57%;
+  margin-top: -43%;
   border-radius: 8px;
   padding: 20px;
   z-index: 1000;

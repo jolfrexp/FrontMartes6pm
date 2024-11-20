@@ -2,11 +2,13 @@ import React, { useContext, useEffect, useState } from 'react'
 import { ingresoContext } from '../providers/ingresosProvider'
 import {usuarioContext} from '../providers/usuarioProvider'
 import { gastosContex } from '../providers/gastosProvider'
+import { FacturaPost } from '../../services/serviciosFactura'
 import IngresoIn from './ingresoIn'
 import Swal from 'sweetalert2'
 import GastoIn from './gastoIn'
 
 function FacturaIn({toggleFactura}) {
+  const [infoFactura,setInfoFactura] = useState([])
   const [monto,setMonto] =useState(0.000)
   const [ingresos,setIngresos] = useState([])
   const [gastos,setGastos] = useState([])
@@ -37,7 +39,7 @@ function FacturaIn({toggleFactura}) {
     });
     
   }
-  const deleteGast = ()=>{
+  const deleteGast = (index)=>{
     Swal.fire({
       title: "Estas seguro?",
       text: "No se puede recuperar luego de que lo elimines",
@@ -72,13 +74,19 @@ function FacturaIn({toggleFactura}) {
   }
 
   useEffect(()=>{
-    console.log(infoIngreso)
+    console.log(infoIngreso[0])
     setIngresos(infoIngreso)
     console.log(infoGastos)
     setGastos(infoGastos)
     setMonto(0)
     sumaMonto(infoIngreso,infoGastos )
   },[infoIngreso,infoGastos])
+  const FacturasPost =async()=>{
+    console.log(infoGastos)
+    console.log(infoIngreso)
+    await FacturaPost({"fecha":dia,"usuario_id":infoUsuario.id,"total":monto},ingresos,infoGastos)
+
+  }
   return (
     <div className='formularioF perfil'>
       <h1>Ingreso de factura</h1>
@@ -107,7 +115,7 @@ function FacturaIn({toggleFactura}) {
           {showGasto ? <GastoIn toggleGasto={toggleGasto} />:<button onClick={toggleGasto}>Gasto</button>}
         <h3>Monto: {monto}</h3>
         <div className="botones">
-        <button className='button p'>Registrar</button>
+        <button className='button p' onClick={FacturasPost}>Registrar</button>
         <button className='button p' onClick={toggleFactura}>Cancelar</button>
         </div>
     </div>
