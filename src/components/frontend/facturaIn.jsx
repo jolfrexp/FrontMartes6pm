@@ -6,6 +6,8 @@ import { FacturaPost } from '../../services/serviciosFactura'
 import IngresoIn from './ingresoIn'
 import Swal from 'sweetalert2'
 import GastoIn from './gastoIn'
+import { IngresoPost } from '../../services/servicesIngreso'
+import { GastoPost } from '../../services/servicesGasto'
 
 function FacturaIn({toggleFactura}) {
   const [infoFactura,setInfoFactura] = useState([])
@@ -84,8 +86,27 @@ function FacturaIn({toggleFactura}) {
   const FacturasPost =async()=>{
     console.log(infoGastos)
     console.log(infoIngreso)
-    await FacturaPost({"fecha":dia,"usuario_id":infoUsuario.id,"total":monto},ingresos,infoGastos)
+    const response = await FacturaPost({"fecha":dia,"usuario_id":infoUsuario.id,"total":monto})
+    console.log(response.id)
+    console.log(ingresos)
+    let i =0
+    while(i<ingresos.length){
+      ingresos[i].factura_id = response.id
+      console.log(ingresos)
+      const response2 = await IngresoPost(ingresos[i])
+      console.log(response2)
+      i = i + 1
+    }
+    i=0
+    while(i<gastos.length){
+      gastos[i].factura_id = response.id
+      const response3 = await GastoPost(gastos[i])
+      console.log(response3)
+      i=i+1
+    }
+    toggleFactura()
 
+    
   }
   return (
     <div className='formularioF perfil'>

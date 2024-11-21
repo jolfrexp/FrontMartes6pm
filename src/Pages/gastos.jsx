@@ -11,21 +11,21 @@ function Gastos() {
     {descripcion:"Prestamo",monto: 375000},
     {descripcion:"Prestamo",monto: 375000},
     {descripcion:"Prestamo",monto: 375000},
-    {descripcion:"Comida",monto: 200000},
-    {descripcion:"Mama",monto: 20000},
-    {descripcion:"Hermana",monto: 140000}
+    
   ]) 
   return (
     <div>
+      <div className="p3">
       <Header/>
       <Nav sel4 ="sec li" sel1= "sec li"sel2 ="sel li" sel3 ="sec li"sel5="sec li" facturas="Facturas" n2="n" home= "Home" ingresos="Ingresos" gastos="Gastos" register="?" />
       <ul className='home rt'>
-        <li className='li animate__animated animate__fadeInDown'>Id</li>
+        <li className='li animate__animated animate__fadeInDown'>Referencia</li>
         <li className='li animate__animated animate__fadeInUp'>Descripcion</li>
         <li className='li animate__animated animate__fadeInDown'>Monto</li>
       </ul>
-      {gastosList.map((reg,i)=><Link className='p' to={`*`}><Gasto gastos={reg} id={i}/></Link>)}
-        <Footer/>
+      {gastosList.map((reg,i)=><Link className='p' to={`*`}><Gasto gastos={reg} id={i}/></Link>)}        
+      </div>
+      <Footer/>
     </div>
   )
 }

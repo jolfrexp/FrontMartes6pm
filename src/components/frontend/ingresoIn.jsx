@@ -15,8 +15,8 @@ function IngresoIn({toggleIngreso}) {
     const [metodoS,setMetodoS] = useState(0)
     
     let onSubmited=(data)=>{
-        data.metodo_id = metodoS
-        data.categoria_id = categoriaS
+        data.metodo_id = metodoS + 1
+        data.categoria_id = categoriaS + 1
         data.monto = parseInt(data.monto,10)
         data.factura_id = 0
         setInfoIngreso([...infoIngreso, data])

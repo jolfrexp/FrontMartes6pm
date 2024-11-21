@@ -264,6 +264,7 @@ input{
   height: 20px;
 }
 .p{
+  background-color: #eee8a9;
   color:#009585 ;
   text-decoration: none;
 }
@@ -272,6 +273,10 @@ input{
   background-color: #009585;
   text-decoration: none;
   margin-left: 1%;
+}
+.p3{
+  background-color: #eee8a9;
+  min-height: 490px;
 }
 .rt{
   width: 100%;
@@ -481,6 +486,9 @@ a{
 .ingreso{
   width: 100%;
   background-color: #4a88fc;
+}
+.MB{
+  /* margin-bottom: 30%; */
 }
 /* Factura in */
 

@@ -47,7 +47,8 @@ function Home({onLogin}) {
   const gastos = 482343;
   const balance = ingresos - gastos;
   return (
-    <div className='home'>
+    <>
+      <div className='home p3'>
       <Header class = {showPerfil ? 'opc' :""}/>
       {showPerfil ?<User onLogin={onLogin} togglePerfil={togglePerfil}/>:"" }
       {showFactura ? <div className="FTR"> <FacturaIn toggleFactura={toggleFactura}/></div> :""}
@@ -57,14 +58,10 @@ function Home({onLogin}) {
       <h1 className={showPerfil ? 'opc' :"p"}>Balance general</h1>
       <main className={showPerfil ? 'opc' :"animate__animated animate__fadeInUp"}>
         <Graphic ingresos={ingresos} gastos={gastos} balance={balance}/>
-      </main> 
-      <div className={showPerfil ? 'opc botones' :"botones"}>
-        <button className='button p2' onClick={toggleFactura}>Ingresar Factura</button>
-        
-      </div>
-      
-      <Footer class = {showPerfil ? 'opc' :""}/>
+      </main>     
     </div>
+    <Footer class = {showPerfil ? 'opc' :""}/>
+    </>
   )
 }
 
