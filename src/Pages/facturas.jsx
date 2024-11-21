@@ -7,8 +7,10 @@ import Factura from '../components/frontend/factura'
 import { useState } from 'react'
 import { FacturaGet } from '../services/serviciosFactura'
 import { usuarioContext } from '../components/providers/usuarioProvider'
+import { facturaContext } from '../components/providers/facturasProvider'
 function Facturas() {
 let {infoUsuario} = useContext(usuarioContext)
+let {infoFactura,setInfoFactura} = useContext(facturaContext)
     const [facturasList,setFacturasList] =useState([{id:"null",fecha:"0000-00-00",total:0}])
     useEffect(()=>{
       console.log(facturasList)
@@ -17,10 +19,12 @@ let {infoUsuario} = useContext(usuarioContext)
     const cargar=async()=>{
       try {
         const response = await FacturaGet(infoUsuario.id)
-        console.log([])
         console.log(response)
         if(response.length != 0){
           setFacturasList(response)
+          setInfoFactura(response)
+          console.log(infoFactura)
+          console.log(infoFactura.length)
         }
         
       } catch (e) {

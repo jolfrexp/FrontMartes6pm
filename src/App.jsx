@@ -1,4 +1,5 @@
 import { IngresoProvider } from './components/providers/ingresosProvider'
+import { FacturaProvider } from './components/providers/facturasProvider'
 import { UsuarioProvider } from './components/providers/usuarioProvider'
 import { GastosProvider } from './components/providers/gastosProvider'
 import { Routes,Route, Navigate } from 'react-router-dom'
@@ -23,7 +24,8 @@ function App() {
     <UsuarioProvider>
       <IngresoProvider>
         <GastosProvider>
-          <Routes>
+          <FacturaProvider>
+            <Routes>
             <Route path='/' element = {<Principal onlogin ={handleLogin}/>}/>
             <Route path='/Home' element = {isAutorized?<Home onlogin ={handleLogin}/>:<Navigate to="/"/>}/>
             <Route path='/Gastos' element = {isAutorized?<Gastos/>:<Navigate to="/"/>}/>
@@ -32,10 +34,10 @@ function App() {
             <Route path='/Dashboard/:id' element={isAutorized?<Dashboard/>:<Navigate to="/"/>}/>
             <Route path='*' element={<NotFound/>}/>
             </Routes>
+          </FacturaProvider>
         </GastosProvider>
       </IngresoProvider>
     </UsuarioProvider>
-    
     </>
   )
 }
