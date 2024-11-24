@@ -8,5 +8,4 @@ function IngresoProvider({children}) {
         </ingresoContext.Provider>
     )
 }
-
 export {ingresoContext,IngresoProvider}

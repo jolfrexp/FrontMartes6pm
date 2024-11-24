@@ -1,14 +1,23 @@
+import { usuarioContext } from '../providers/usuarioProvider.jsx'
+import { userLogin } from '../../services/servicioUsuario.jsx'
 import React, { useContext,useEffect, useState } from 'react'
+import '../../assets/css/frontend/loginAndRegister.css'
+import { useNavigate } from 'react-router-dom'
 import { useForm } from 'react-hook-form'
 import Swal from 'sweetalert2'
-import { usuarioContext } from '../providers/usuarioProvider.jsx'
-import { useNavigate } from 'react-router-dom'
-import { userLogin } from '../../services/servicioUsuario.jsx'
 
 function Login({toggleLogin,toggleRegister,onLogin}) {
+
   let navigate = useNavigate()
+
   let {infoUsuario,setInfoUsuario} = useContext(usuarioContext)
-  let {register,handleSubmit, formState:{errors}} = useForm()     
+
+  let {register,handleSubmit, formState:{errors}} = useForm()  
+
+  const [dataVisible,setDatavisible] = useState(false)
+  const[password,setPassword] = useState("")
+  const[correo,setCorreo] = useState("")
+
   useEffect(()=>{if(infoUsuario != null){
     
     if(infoUsuario.correo == "jolfre@gmail.com"){
@@ -49,9 +58,7 @@ let onSubmited=async(data)=>{
       toggleRegister()
       toggleLogin()
   }
-  const [dataVisible,setDatavisible] = useState(false)
-  const[correo,setCorreo] = useState("")
-  const[password,setPassword] = useState("")
+
   useEffect (()=>{
     if(correo!=""&& password!=""){
       setDatavisible(true)
@@ -62,8 +69,8 @@ let onSubmited=async(data)=>{
 
   return (
       <div className='Inicio'>
-            <h1>Login</h1>
-            <form className='formulario' onSubmit={handleSubmit(onSubmited)}>
+        <h1>Login</h1>
+        <form className='formulario' onSubmit={handleSubmit(onSubmited)}>
                 <div className="mail">
                   <label>Correo Electronico:</label>
                 <div>
@@ -75,13 +82,12 @@ let onSubmited=async(data)=>{
                   <input type="password" {...register('password',{require:true})} placeholder='Contraseña' id='Password' value={password} onChange={(e)=>{setPassword(e.target.value)}} required /></div>
                 </div>
         <div className="botones">
-        {dataVisible && <button className='button p'>Ingresar</button>}
-        <button className='button p' onClick={toggleLogin}>Cerrar</button>
-        <button className='button p' onClick={toggleRegister2} >Registro</button>
+          {dataVisible && <button className='button p'>Ingresar</button>}
+          <button className='button p' onClick={toggleLogin}>Cerrar</button>
+          <button className='button p' onClick={toggleRegister2} >Registro</button>
         </div>
         </form>
         </div>    
   )
 }
-
 export default Login

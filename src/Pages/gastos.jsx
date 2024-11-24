@@ -1,22 +1,20 @@
-import React, { useContext, useState } from 'react'
-import Header from '../components/frontend/header'
-import Nav from '../components/frontend/nav'
-import Gasto from './gasto'
-import { Link } from 'react-router-dom'
-import Footer from '../components/frontend/footer'
 import { facturaContext } from '../components/providers/facturasProvider'
 import { GastoGet } from '../services/servicesGasto'
-// import Swal from 'sweetalert2'
+import React, { useContext, useState } from 'react'
+import Footer from '../components/frontend/footer'
+import Header from '../components/frontend/header'
+import Nav from '../components/frontend/nav'
+import { Link } from 'react-router-dom'
+import Gasto from './gasto'
+
 function Gastos() {
-  const [gastosList,setGastosList] =useState([
-    {descripcion:"Prestamo",monto: 375000},
-    {descripcion:"Prestamo",monto: 375000},
-    {descripcion:"Prestamo",monto: 375000},
-    {descripcion:"Prestamo",monto: 375000},
-    
-  ])
+
+  let i=0  
+
   let {infoFactura} = useContext(facturaContext)
-  let i=0
+
+  const [gastosList,setGastosList] =useState([{id:"null",fecha:"0000-00-00",total:0}])
+  
   while(i<infoFactura.length){
     const GetGastos = async(id)=>{
       try {
@@ -34,6 +32,7 @@ function Gastos() {
     GetGastos(infoFactura[i].id)
     i = i + 1
   }
+  
   return (
     <div>
       <div className="p3">
@@ -46,9 +45,8 @@ function Gastos() {
       </ul>
       {gastosList.map((reg,i)=><Link className='p' to={`*`}><Gasto gastos={reg} id={i}/></Link>)}        
       </div>
-      <Footer/>
+      <Footer class = "footer"/>
     </div>
   )
 }
-
 export default Gastos

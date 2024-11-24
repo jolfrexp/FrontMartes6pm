@@ -8,5 +8,4 @@ function GastosProvider({children}) {
     </gastosContex.Provider>
   )
 }
-
 export {gastosContex,GastosProvider}

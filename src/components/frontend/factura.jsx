@@ -11,5 +11,4 @@ function Factura({fac,id}) {
     </div>
   )
 }
-
 export default Factura

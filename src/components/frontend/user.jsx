@@ -1,8 +1,10 @@
-import React, { useContext } from 'react'
 import { usuarioContext } from '../providers/usuarioProvider'
-import img1 from '../../assets/person-circle.svg'
-import img2 from '../../assets/mail.svg'
-import img3 from '../../assets/key-fill.svg'
+import img1 from '../../assets/img/person-circle.svg'
+import img3 from '../../assets/img/key-fill.svg'
+import img2 from '../../assets/img/mail.svg'
+import '../../assets/css/frontend/user.css'
+import React, { useContext } from 'react'
+
 function User({togglePerfil,onLogin}){
     let {infoUsuario} = useContext(usuarioContext)
   return (
@@ -10,7 +12,11 @@ function User({togglePerfil,onLogin}){
         <div className='home perfil animate__animated animate__fadeInRight'>
             <h1>User ID </h1>
             <h2>{infoUsuario.id}</h2>
-            <div className='img'><img src={img1} alt="" /><img src={img2} alt="" /><img src={img3} alt="" /></div>
+            <div className='img'>
+                <img src={img1} alt="" />
+                <img src={img2} alt="" />
+                <img src={img3} alt="" />
+            </div>
             <div className='flex'>
                 <h4>Nombre:</h4>
                 <h3>{infoUsuario.nombre}</h3>    
@@ -44,12 +50,9 @@ function User({togglePerfil,onLogin}){
             <div className="botones mt">
                 <button onClick={togglePerfil} className='button p2'>Cerrar</button>
                 <button onClick={onLogin} className='button p2'><a href="/Home">LogOut</a></button>
-            </div>
-            
+            </div> 
         </div>
-        
     </>
   )
 }
-
 export default User

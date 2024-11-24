@@ -8,5 +8,4 @@ function UsuarioProvider({children}) {
     </usuarioContext.Provider>
   )
 }
-
 export {usuarioContext,UsuarioProvider}

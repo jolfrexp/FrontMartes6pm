@@ -1,17 +1,14 @@
-import React, {  useState } from 'react'
 import Header from '../components/frontend/header'
-import Nav from '../components/frontend/nav'
-import Ingreso from './ingreso'
-import { Link } from 'react-router-dom'
 import Footer from '../components/frontend/footer'
+import Nav from '../components/frontend/nav'
+import React, {  useState } from 'react'
+import { Link } from 'react-router-dom'
+import Ingreso from './ingreso'
+
 function Ingresos() {
-  let [ingresoList,setIngresoList] = useState([
-    {nombre:"Nomina",descripcion:"Pago nomina 10 nov",monto: 475000},
-    {nombre:"Nomina",descripcion:"Pago nomina 10 nov",monto: 475000},
-    {nombre:"Nomina",descripcion:"Pago nomina 10 nov",monto: 475000},
-    {nombre:"Nomina",descripcion:"Pago nomina 10 nov",monto: 475000},
-    
-  ])
+
+  let [ingresoList,setIngresoList] = useState([{id:"null",fecha:"0000-00-00",total:0}])
+
   return (
     <div>
       <div className="p3">
@@ -26,9 +23,8 @@ function Ingresos() {
           {ingresoList.map((reg,i)=><Link className='p' to={`*`}><Ingreso ingreso={reg} id={i}/></Link>)}
       </div>
       
-    <Footer/>
+    <Footer class ="footer"/>
     </div>
   )
 }
-
 export default Ingresos

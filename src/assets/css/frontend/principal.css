@@ -1,0 +1,48 @@
+.imagenes{
+    margin-top: 3%;
+    display: flex;
+    gap: 5%;
+}
+.cont-img{
+    width: 30%;
+}
+.cont-img img{
+    width: 100%;
+}
+.textos{
+    display: flex;
+}
+.text{
+    width: 33%;
+    text-align: center;
+}
+.tp{
+    margin-top: 4%;
+}
+.principal{
+    background-color:#eee8a9;
+}
+.recomendaciones{
+    width: 100%;
+    margin-top: 12%;
+}
+.recomendacion{
+    display: flex;
+}
+.cont-img2{
+    width: 20%;
+}
+.cont-img2 img{
+    width: 100%;
+    border-radius: 50%;
+}
+.cont-img2 h1{
+    margin-left: 35%;
+}
+.textoRe{
+    text-align: center;
+    width: 70%;
+}
+.textoRe p{
+    margin-top: 8%;
+}

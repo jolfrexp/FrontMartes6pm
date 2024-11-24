@@ -1,11 +1,13 @@
-import React,{useContext, useEffect, useState} from 'react'
-import { usuarioContext } from '../providers/usuarioProvider'
-import { useForm } from 'react-hook-form'
-import { gastosContex } from '../providers/gastosProvider'
 import { CategoriaGet } from '../../services/serviciosCategoria'
+import { usuarioContext } from '../providers/usuarioProvider'
 import { MDPGet } from '../../services/serviciosMetodoPagos'
+import React,{useContext, useEffect, useState} from 'react'
+import { gastosContex } from '../providers/gastosProvider'
+import { useForm } from 'react-hook-form'
+
 function GastoIn({toggleGasto}) {
     let {infoGastos,setInfoGastos} = useContext(gastosContex)
+
     let {register,handleSubmit, formState:{errors}} = useForm()
 
     const [menuCategoria,setMenuCategoria] = useState(0)
@@ -97,5 +99,4 @@ function GastoIn({toggleGasto}) {
     </div>
   )
 }
-
 export default GastoIn

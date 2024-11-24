@@ -1,0 +1,16 @@
+.p3{
+    background-color: #eee8a9;
+    min-height: 490px;
+}
+.p{
+    color:#009585 ;
+    text-decoration: none;
+}
+.opc {
+    opacity: 0.2;
+    pointer-events: none;
+}
+.home{
+    background-color: #eee8a9;
+    color:#02665c;
+}

@@ -1,5 +1,7 @@
+import '../../assets/css/frontend/header.css'
+import logo from '../../assets/img/logo.png'
 import React from 'react'
-import logo from '../../assets/logo.png'
+
 function Header(props) {
   return (
     <>
@@ -11,14 +13,10 @@ function Header(props) {
         <div className='header_text'>
           <h1>EcoFin</h1>
           <p>Economia y finanzas en la mejor pagina</p>
-
         </div>
-      </div>
-        
-        
+      </div> 
     </header>
     </>
   )
 }
-
 export default Header

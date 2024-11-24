@@ -1,18 +1,22 @@
-import React, { useState,useEffect } from 'react'
-import Header from '../components/frontend/header'
-import Nav from '../components/frontend/nav'
-import img1 from "../assets/ahorro.png"
-import img2 from "../assets/gestion-de-proyectos.png"
-import img3 from "../assets/gdg.webp"
-import avatar1 from "../assets/avatar1.png"
-import avatar2 from "../assets/avatar2.png"
-import avatar3 from "../assets/avatar3.png"
-import Footer from '../components/frontend/footer'
-import Login from '../components/frontend/Login'
+import img2 from "../assets/img/gestion-de-proyectos.png"
 import Register from '../components/frontend/Register'
+import Footer from '../components/frontend/footer'
+import Header from '../components/frontend/header'
+import React, { useState,useEffect } from 'react'
+import Login from '../components/frontend/Login'
+import avatar1 from "../assets/img/avatar1.png"
+import avatar2 from "../assets/img/avatar2.png"
+import avatar3 from "../assets/img/avatar3.png"
+import '../assets/css/frontend/principal.css'
+import Nav from '../components/frontend/nav'
+import img1 from "../assets/img/ahorro.png"
+import img3 from "../assets/img/gdg.webp"
+
 function Principal({onlogin}) {
+
   const [showLogin,setShowLogin] = useState(false)
   const [showRegister,setShowRegister] = useState(false)
+
   const toggleRegister = () =>{
     if(showRegister){
       setShowRegister(false)
@@ -111,12 +115,8 @@ function Principal({onlogin}) {
     
       </div>
         }
-      
-      
-      
-      <Footer/>
+      <Footer class ="footer"/>
     </div>
   )
 }
-
 export default Principal

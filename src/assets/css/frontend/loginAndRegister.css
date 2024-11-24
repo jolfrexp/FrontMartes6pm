@@ -1,0 +1,22 @@
+.Inicio{
+    color:#009585;
+    width: 35%;
+    text-align: center;
+    border-radius: 8px;
+    padding: 20px;
+    z-index: 1000;
+    pointer-events:auto;
+    margin-left: 30%;
+    margin-bottom: 10%; 
+  }
+  .formulario{
+    margin-top: 10%;
+  }
+  .formulario input{
+    text-align: center;
+    width: 60%;
+    border-radius: 10px;
+    height: 40px;
+    outline: none;
+    border: 1px solid #ccc;
+  }

@@ -12,5 +12,4 @@ function Gasto({gastos,id}) {
     </div>
   )
 }
-
 export default Gasto

@@ -1,0 +1,104 @@
+.formularioF{
+    margin-left: 30%;
+   text-align: center;
+   background-color: #eee8a9;
+}
+.formularioF input{
+    text-align: center;
+    width: 30%;
+    border-radius: 10px;
+    height: 40px;
+    outline: none;
+    border: 1px solid #ccc;
+}
+.ulF{
+    flex-direction: column;
+    
+}
+.liF{
+    cursor: pointer;
+    margin-left: 50%;
+    border: 1px solid #009585;
+    border-radius: 10px;
+    width: 100%;
+}
+.liF2{
+    cursor: pointer;
+    margin-left: 50%;
+    border: 1px solid #009585;
+    border-radius: 10px;
+    width: 100%;
+}
+.ingreso{
+    width: 100%;
+    background-color: #4a88fc;
+} 
+.perfilF{
+    position:absolute;
+    width: 35%;
+    text-align: center;
+    margin-top: 1%;
+    border-radius: 8px;
+    padding: 20px;
+    z-index: 1000;
+    box-shadow: 0 4px 8px black;
+    pointer-events:auto;
+  }
+  /* Ingreso in */
+  .formularioI{
+    background-color:#eee8a9;
+    position:absolute;
+    width: 100%;
+    margin-left: -65%;
+    text-align: center;
+    margin-top: -38%;
+    border-radius: 8px;
+    padding: 20px;
+    z-index: 1000;
+    box-shadow: 0 4px 8px black;
+    pointer-events:auto;
+}
+.formularioI input{
+     text-align: center;
+     width: 100%;
+     border-radius: 10px;
+     height: 40px;
+     outline: none;
+     border: 1px solid #ccc;
+}
+/* Ingreso in */
+/* Gastos in */
+.formularioG{
+    background-color:#02665c;
+    color: #eee8a9;
+    position:absolute;
+    width: 100%;
+    margin-left: 60%;
+    text-align: center;
+    margin-top: -43%;
+    border-radius: 8px;
+    padding: 20px;
+    z-index: 1000;
+    box-shadow: 0 4px 8px black;
+    pointer-events:auto;
+    
+   }
+   .formularioG input{
+     text-align: center;
+     width: 100%;
+     border-radius: 10px;
+     height: 40px;
+     outline: none;
+     border: 1px solid #ccc;
+   }
+  /* Gastos in */
+  
+.rt{
+    width: 100%;
+    height: 70px;
+}
+.rt li{
+    margin-top: 1%;
+    width: 100%;
+    
+}

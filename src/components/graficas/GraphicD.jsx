@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react'
 import { Chart as ChartJS,CategoryScale,LinearScale,BarElement,Title,Filler,Tooltip,PointElement,LineElement,Legend,ArcElement } from 'chart.js'
 import { Bar, Doughnut } from 'react-chartjs-2'
+import React, { useEffect, useState } from 'react'
 ChartJS.register(
     CategoryScale,
     LinearScale,
@@ -149,5 +149,4 @@ function GraphicF(){
     };
     return <Bar data={data} options={options} />
 }
-
 export  {GraphicD,GraphicE,GraphicF}

@@ -8,5 +8,4 @@ function FacturaProvider({children}) {
         </facturaContext.Provider>
     )
 }
-
 export {facturaContext,FacturaProvider}

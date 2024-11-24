@@ -1,15 +1,19 @@
-import React, { useEffect, useState } from 'react'
 import {GraphicD,GraphicE, GraphicF} from '../../components/graficas/GraphicD'
 import { UsuarioGet } from '../../services/servicioUsuario'
 import { Link, useParams } from 'react-router-dom'
+import React, { useEffect, useState } from 'react'
+import '../../assets/css/Admin/dashboard.css'
+
 function Dashboard() {
-    const [searchTerm,setSearchTerm] = useState('')
     let {id} = useParams()
-    const [select,setSelect] = useState('')
-    const [search,setSearch] = useState([''])
-    const [users,setUsers] = useState([''])
-    const [showUsuarios,setShowUsarios] = useState(false)
+
     const [showFinanciero,setShowFinancieros] = useState(false)
+    const [showUsuarios,setShowUsarios] = useState(false)
+    const [searchTerm,setSearchTerm] = useState('')
+    const [search,setSearch] = useState([''])    
+    const [select,setSelect] = useState('')
+    const [users,setUsers] = useState([''])
+    
 useEffect(()=>{
     async function fetchData() {
        try {
@@ -54,9 +58,15 @@ const  filteredUsers = search.filter((s)=>s.toLowerCase().includes(searchTerm.to
         </header>
         <nav className='navD'>
             <ul>
-                <li><Link className='det' to="/Dashboard/1">Usuarios</Link></li>
-                <li><Link className='det' to='/Dashboard/2'>Financiero</Link></li>
-                <li><a className='det' href='/'>Logout</a></li>
+                <li>
+                    <Link className='det' to="/Dashboard/1">Usuarios</Link>
+                </li>
+                <li>
+                    <Link className='det' to='/Dashboard/2'>Financiero</Link>
+                </li>
+                <li>
+                    <a className='det' href='/'>Logout</a>
+                </li>
             </ul>
         </nav>
         {showUsuarios && 
@@ -140,5 +150,4 @@ const  filteredUsers = search.filter((s)=>s.toLowerCase().includes(searchTerm.to
     </div>
   )
 }
-
 export default Dashboard

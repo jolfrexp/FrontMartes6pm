@@ -1,12 +1,15 @@
-import React,{useContext, useEffect, useState} from 'react'
-import { usuarioContext } from '../providers/usuarioProvider'
-import { useForm } from 'react-hook-form'
-import { ingresoContext } from '../providers/ingresosProvider'
 import { CategoriaGet } from '../../services/serviciosCategoria'
+import { ingresoContext } from '../providers/ingresosProvider'
+import { usuarioContext } from '../providers/usuarioProvider'
 import { MDPGet } from '../../services/serviciosMetodoPagos'
+import React,{useContext, useEffect, useState} from 'react'
+import { useForm } from 'react-hook-form'
+
 function IngresoIn({toggleIngreso}) {
     let {infoIngreso,setInfoIngreso} = useContext(ingresoContext)
+
     let {register,handleSubmit, formState:{errors}} = useForm()
+
     const [menuCategoria,setMenuCategoria] = useState(0)
     const [categorias,setCategorias] = useState([])
     const [categoriaS,setCategoriaS] = useState(0)
@@ -96,5 +99,4 @@ function IngresoIn({toggleIngreso}) {
     </div>
   )
 }
-
 export default IngresoIn

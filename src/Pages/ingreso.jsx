@@ -11,5 +11,4 @@ function Ingreso({ingreso,id}) {
     </>
   )
 }
-
 export default Ingreso

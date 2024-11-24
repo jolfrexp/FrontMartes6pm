@@ -1,36 +1,33 @@
+import { facturaContext } from '../components/providers/facturasProvider'
+import { usuarioContext } from '../components/providers/usuarioProvider'
+import { FacturaGet } from '../services/serviciosFactura'
+import Factura from '../components/frontend/factura'
 import React, { useContext, useEffect } from 'react'
 import Header from '../components/frontend/header'
-import Nav from '../components/frontend/nav' 
 import Footer from '../components/frontend/footer'
+import Nav from '../components/frontend/nav' 
 import { Link } from 'react-router-dom'
-import Factura from '../components/frontend/factura'
 import { useState } from 'react'
-import { FacturaGet } from '../services/serviciosFactura'
-import { usuarioContext } from '../components/providers/usuarioProvider'
-import { facturaContext } from '../components/providers/facturasProvider'
+
 function Facturas() {
-let {infoUsuario} = useContext(usuarioContext)
-let {infoFactura,setInfoFactura} = useContext(facturaContext)
-    const [facturasList,setFacturasList] =useState([{id:"null",fecha:"0000-00-00",total:0}])
-    useEffect(()=>{
-      console.log(facturasList)
-      cargar()
-    },[])
-    const cargar=async()=>{
-      try {
-        const response = await FacturaGet(infoUsuario.id)
-        console.log(response)
-        if(response.length != 0){
-          setFacturasList(response)
-          setInfoFactura(response)
-          console.log(infoFactura)
-          console.log(infoFactura.length)
-        }
-        
-      } catch (e) {
-        console.error(e)
-        
-      }
+
+  let {infoFactura,setInfoFactura} = useContext(facturaContext)
+  let {infoUsuario} = useContext(usuarioContext)
+
+  const [facturasList,setFacturasList] =useState([{id:"null",fecha:"0000-00-00",total:0}])
+  const cargar=async()=>{
+    try {
+      const response = await FacturaGet(infoUsuario.id)
+      console.log(response)
+      if(response.length != 0){
+        setFacturasList(response)
+        setInfoFactura(response)
+        console.log(infoFactura)
+        console.log(infoFactura.length)
+      } 
+    } catch (e) {
+      console.error(e)
+    }
     }
     useEffect(()=>{
       if (facturasList[0].id == "null") {
@@ -38,6 +35,10 @@ let {infoFactura,setInfoFactura} = useContext(facturaContext)
     }else if(facturasList == []){
       console.log("ya hay resultados")
     }},[facturasList])
+    useEffect(()=>{
+      console.log(facturasList)
+      cargar()
+    },[])
   return (
     <>
       <div className="p3">
@@ -55,9 +56,8 @@ let {infoFactura,setInfoFactura} = useContext(facturaContext)
       <li className='li'>Resultados</li>
       </ul> )}
       </div>
-      <Footer/>
+      <Footer class= "footer"/>
     </>
   )
 }
-
 export default Facturas
