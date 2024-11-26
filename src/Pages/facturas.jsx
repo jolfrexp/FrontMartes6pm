@@ -18,19 +18,16 @@ function Facturas() {
   const cargar=async()=>{
     try {
       const response = await FacturaGet(infoUsuario.id)
-      console.log(response)
       if(response.length != 0){
         setFacturasList(response)
         setInfoFactura(response)
-        console.log(infoFactura)
-        console.log(infoFactura.length)
       } 
     } catch (e) {
       console.error(e)
     }
     }
     useEffect(()=>{
-      if (facturasList[0].id == "null") {
+    if (facturasList[0].id == "null") {
       console.log("no hay resultados")
     }else if(facturasList == []){
       console.log("ya hay resultados")

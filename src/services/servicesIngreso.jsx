@@ -10,7 +10,7 @@ async function IngresoPost(data) {
     }
     
 }
-async function IngresoGetFI(id) {
+async function IngresoGet(id) {
     try {
         const response = await axios.get(`http://127.0.0.1:8000/ingreso/${id}`)
         return response.data
@@ -20,4 +20,4 @@ async function IngresoGetFI(id) {
     }
     
 }
-export {IngresoPost}
+export {IngresoPost,IngresoGet}

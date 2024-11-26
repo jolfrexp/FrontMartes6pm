@@ -11,8 +11,8 @@ import Nav from '../components/frontend/nav'
 import '../assets/css/frontend/home.css'
 
 function Home({onLogin}) {
-  const ingresos = 610512;
-  const gastos = 482343;
+  const [ingresos,setIngresos] = useState(0);
+  const [gastos,setGastos] = useState(10);
   const balance = ingresos - gastos;
 
   let {infoUsuario} = useContext(usuarioContext)
@@ -34,8 +34,11 @@ function Home({onLogin}) {
     }else{
       setShowFactura(!showFactura)
     }
-    
-      
+  }
+  const Gastos=()=>{
+
+  }
+  const Ingresos=()=>{
 
   }
 
