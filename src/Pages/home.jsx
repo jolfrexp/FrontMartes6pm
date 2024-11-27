@@ -1,9 +1,13 @@
 import { ingresoContext } from '../components/providers/ingresosProvider'
+import { facturaContext } from '../components/providers/facturasProvider'
 import { usuarioContext } from '../components/providers/usuarioProvider'
 import { gastosContex } from '../components/providers/gastosProvider'
 import { datosContex } from '../components/providers/DatosGProvider'
 import React, { useContext, useEffect, useState } from 'react'
+import { FacturaGet } from '../services/serviciosFactura'
 import FacturaIn from '../components/frontend/facturaIn'
+import { IngresoGet } from '../services/servicesIngreso'
+import { GastoGet } from '../services/servicesGasto'
 import Graphic from '../components/graficas/Graphic'
 import Header from '../components/frontend/header'
 import Footer from '../components/frontend/footer'
@@ -12,6 +16,9 @@ import Nav from '../components/frontend/nav'
 import '../assets/css/frontend/home.css'
 
 function Home({onLogin}) {
+  let i=0 
+  let j=0 
+
   const [ingresos,setIngresos] = useState(0);
   const [gastos,setGastos] = useState(0);
   const balance = ingresos - gastos;
@@ -20,7 +27,7 @@ function Home({onLogin}) {
   let {setInfoGastos} = useContext(gastosContex)
   let {setInfoIngreso} = useContext(ingresoContext)
   let{infoDatos2,setInfoDatos2,infoDatos,setInfoDatos}= useContext(datosContex)
-  
+  let {infoFactura,setInfoFactura} = useContext(facturaContext)
   const [showFactura,setShowFactura] = useState(false)
   const [showPerfil,setShowPerfil] = useState(false)
 
@@ -43,15 +50,46 @@ function Home({onLogin}) {
     setGastos(totalGasto)
     setIngresos(totalIngreso)
   }
+  const cargar=async()=>{
+    setInfoDatos2([])
+    setInfoDatos([])
+    try {
+      const response = await FacturaGet(infoUsuario.id)
+      console.log(response)
+      if(response.length != 0){
+        setInfoFactura(response)
+
+      while(i<response.length){
+          const response2  = await  GastoGet(response[i].id)
+          console.log(response2)
+          setInfoDatos2(data=> [...data, ...response2])
+          i = i + 1
+      }
+      while(j<response.length){
+        const response3  = await IngresoGet(response[j].id)
+        console.log(response3)
+        setInfoDatos(data=> [...data, ...response3])
+        j= j + 1
+      }
+      } 
+    } catch (e) {
+      console.error(e)
+    }
+  }
+
+  useEffect(()=>{
+    cargar()
+  },[])
   useEffect(()=>{
     CargarDatos()
-  },[])
+  },[infoDatos2,infoDatos])
+
   return (
     <>
       <div className='home p3'>
         <Header class = {showPerfil ? 'opc' :""}/>
         {showPerfil ?<User onLogin={onLogin} togglePerfil={togglePerfil}/>:"" }
-        {showFactura ? <div className="FTR"> <FacturaIn toggleFactura={toggleFactura}/></div> :""}
+        {showFactura ? <div className="FTR"> <FacturaIn toggleFactura={toggleFactura} /></div> :""}
         <Nav class ={showPerfil ? 'opc' :""} sel4="sec li" sel5="sec li" sel1 ="sel li" sel2 ="sec li" sel3 ="sec li" n1="n" sesion="Cerrar sesion" facturas="Facturas" register= {infoUsuario.nombre}
         ingresos = "Ingresos" gastos= "Gastos" home="Home" togglePerfil={togglePerfil} togglePerfil2={toggleFactura} register2="Ingresar Factura"/>
         <h1 className={showPerfil ? 'opc' :"p"}>Balance general</h1>

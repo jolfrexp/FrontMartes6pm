@@ -9,8 +9,9 @@ import '../../assets/css/frontend/facturas.css'
 import IngresoIn from './ingresoIn'
 import GastoIn from './gastoIn'
 import Swal from 'sweetalert2'
-
+import { datosContex } from '../providers/DatosGProvider'
 function FacturaIn({toggleFactura}) {
+  let {setInfoDatos2,setInfoDatos} = useContext(datosContex)
   let {infoIngreso,setInfoIngreso} = useContext(ingresoContext)
   let {infoGastos,setInfoGastos} = useContext(gastosContex)  
   let {infoUsuario} = useContext(usuarioContext)
@@ -66,28 +67,29 @@ function FacturaIn({toggleFactura}) {
     });
   }
   const FacturasPost =async()=>{
-    console.log(infoGastos)
-    console.log(infoIngreso)
-    const response = await FacturaPost({"fecha":dia,"usuario_id":infoUsuario.id,"total":monto})
-    console.log(response.id)
-    console.log(ingresos)
-    let i =0
-    while(i<ingresos.length){
-      ingresos[i].factura_id = response.id
-      console.log(ingresos)
-      const response2 = await IngresoPost(ingresos[i])
-      console.log(response2)
-      i = i + 1
-    }
-    i=0
-    while(i<gastos.length){
-      gastos[i].factura_id = response.id
-      const response3 = await GastoPost(gastos[i])
-      console.log(response3)
-      i=i+1
-    }
-    toggleFactura()
+    try {
+        const response = await FacturaPost({"fecha":dia,"usuario_id":infoUsuario.id,"total":monto})
 
+      let i =0
+      while(i<ingresos.length){
+        ingresos[i].factura_id = response.id
+        const response2 = await IngresoPost(ingresos[i])
+        console.log(response2)
+        i = i + 1
+      }
+      i=0
+      while(i<gastos.length){
+        gastos[i].factura_id = response.id
+        const response3 = await GastoPost(gastos[i])
+        console.log(response3)
+        i=i+1
+      }
+      setInfoDatos(data=>[...data, ...ingresos])
+      setInfoDatos2(data=>[...data, ...gastos])
+      toggleFactura()
+    } catch (e) {
+      
+    }
     
   }
   const sumaMonto = (ingresos,gastos)=>{

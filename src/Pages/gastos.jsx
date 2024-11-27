@@ -1,45 +1,23 @@
-import { facturaContext } from '../components/providers/facturasProvider'
 import { datosContex } from '../components/providers/DatosGProvider'
-import React, { useContext, useEffect, useState } from 'react'
-import { GastoGet } from '../services/servicesGasto'
 import Footer from '../components/frontend/footer'
 import Header from '../components/frontend/header'
 import Nav from '../components/frontend/nav'
-import { Link } from 'react-router-dom'
+import React, { useContext } from 'react'
 import Gasto from './gasto'
 function Gastos() {
+  let {infoDatos2}= useContext(datosContex)
 
-  let i=0  
-
-  let {infoFactura} = useContext(facturaContext)
-  let{infoDatos2,setInfoDatos2}= useContext(datosContex)
-
-  const [gastosList,setGastosList] =useState([{id:"Referencia",descripcion:"Descripcion",monto:"Monto"}])
-  const GetGastos = async(id)=>{
-    try {
-      const response  = await  GastoGet(id)
-      setGastosList(data=> [...data, ...response])
-      setInfoDatos2(data=> [...data, ...response])
-    } catch (e) {
-      console.error(e)
-    }
-
-  }
-  
-  useEffect(()=>{
-    setInfoDatos2([])
-    while(i<infoFactura.length){
-    GetGastos(infoFactura[i].id)
-    i = i + 1
-    }
-    setGastosList([...gastosList].sort((a,b)=>a.id-b.id))
-  },[])
   return (
     <div>
       <div className="p3">
       <Header/>
       <Nav sel4 ="sec li" sel1= "sec li"sel2 ="sel li" sel3 ="sec li"sel5="sec li" facturas="Facturas" n2="n" home= "Home" ingresos="Ingresos" gastos="Gastos" register="?" />
-      {gastosList.map((reg,i)=><Link className='p' to={`*`}><Gasto gastos={reg} id={i}/></Link>)}        
+      <ul className='home rt'>
+        <li className='li animate__animated animate__fadeInDown'>Referencia</li>
+        <li className='li animate__animated animate__fadeInUp'>Descripcion</li>
+        <li className='li animate__animated animate__fadeInDown'>Monto</li>
+      </ul>
+      {infoDatos2.map((reg,i)=><Gasto gastos={reg} id={i}/>)}        
       </div>
       <Footer class = "footer"/>
     </div>
