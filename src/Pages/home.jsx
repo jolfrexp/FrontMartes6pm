@@ -1,6 +1,7 @@
 import { ingresoContext } from '../components/providers/ingresosProvider'
 import { usuarioContext } from '../components/providers/usuarioProvider'
 import { gastosContex } from '../components/providers/gastosProvider'
+import { datosContex } from '../components/providers/DatosGProvider'
 import React, { useContext, useEffect, useState } from 'react'
 import FacturaIn from '../components/frontend/facturaIn'
 import Graphic from '../components/graficas/Graphic'
@@ -12,13 +13,14 @@ import '../assets/css/frontend/home.css'
 
 function Home({onLogin}) {
   const [ingresos,setIngresos] = useState(0);
-  const [gastos,setGastos] = useState(10);
+  const [gastos,setGastos] = useState(0);
   const balance = ingresos - gastos;
 
   let {infoUsuario} = useContext(usuarioContext)
   let {setInfoGastos} = useContext(gastosContex)
   let {setInfoIngreso} = useContext(ingresoContext)
-
+  let{infoDatos2,setInfoDatos2,infoDatos,setInfoDatos}= useContext(datosContex)
+  
   const [showFactura,setShowFactura] = useState(false)
   const [showPerfil,setShowPerfil] = useState(false)
 
@@ -35,16 +37,15 @@ function Home({onLogin}) {
       setShowFactura(!showFactura)
     }
   }
-  const Gastos=()=>{
-
+  const CargarDatos=()=>{
+    const totalIngreso = infoDatos.reduce((acc,ingreso)=>acc + ingreso.monto,0)
+    const totalGasto = infoDatos2.reduce((acc,gasto) =>acc + gasto.monto,0)
+    setGastos(totalGasto)
+    setIngresos(totalIngreso)
   }
-  const Ingresos=()=>{
-
-  }
-
   useEffect(()=>{
-    console.log(infoUsuario)
-  },[infoUsuario])
+    CargarDatos()
+  },[])
   return (
     <>
       <div className='home p3'>

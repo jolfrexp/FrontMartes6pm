@@ -12,13 +12,14 @@ function Gastos() {
   let i=0  
 
   let {infoFactura} = useContext(facturaContext)
-  let{infoDatos,setInfoDatos}= useContext(datosContex)
+  let{infoDatos2,setInfoDatos2}= useContext(datosContex)
 
   const [gastosList,setGastosList] =useState([{id:"Referencia",descripcion:"Descripcion",monto:"Monto"}])
   const GetGastos = async(id)=>{
     try {
       const response  = await  GastoGet(id)
       setGastosList(data=> [...data, ...response])
+      setInfoDatos2(data=> [...data, ...response])
     } catch (e) {
       console.error(e)
     }
@@ -26,12 +27,12 @@ function Gastos() {
   }
   
   useEffect(()=>{
+    setInfoDatos2([])
     while(i<infoFactura.length){
     GetGastos(infoFactura[i].id)
     i = i + 1
     }
     setGastosList([...gastosList].sort((a,b)=>a.id-b.id))
-    gastosList.slice(1).map((gasto,id)=>setInfoDatos((data)=>data - gasto.monto))
   },[])
   return (
     <div>

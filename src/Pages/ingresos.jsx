@@ -14,30 +14,25 @@ function Ingresos() {
   
   let {infoFactura} = useContext(facturaContext)
   let{infoDatos,setInfoDatos}= useContext(datosContex)
-
-  const [ids,setId]=useState([])
   const [ingresoList,setIngresoList] = useState([{id:"Referencia",descripcion:"Descripcion",monto:"Monto"}])
   const GetIngresos = async(id)=>{
     try {
       const response  = await IngresoGet(id)
-      setIngresoList(data=> [...data, ...response])
-      
+        setIngresoList(data=> [...data, ...response])
+        setInfoDatos(data=> [...data, ...response])
     } catch (e) {
       console.error(e)
     }
 
   }
-  useEffect(async()=>{
-  while(i<infoFactura.length){
-    setId(data=>[...data, ...infoFactura[i].id])
-    i = i + 1
-  }
-  await GetIngresos(ids)
-  setIngresoList([...ingresoList].sort((a,b)=> a.id - b.id))
-  ingresoList.slice(1).map((ingreso,id)=>setInfoDatos((data)=>data + ingreso.monto))
+  useEffect(()=>{
+    setInfoDatos([])
+    while(i<infoFactura.length){
+      GetIngresos(infoFactura[i].id)
+      i = i + 1
+    }
+    setIngresoList([...ingresoList].sort((a,b)=> a.id - b.id))
   },[])
-
-  useEffect(()=>{console.log(infoDatos)},[infoDatos])
   return (
     <div>
       <div className="p3">

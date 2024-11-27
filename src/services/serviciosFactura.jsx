@@ -2,7 +2,6 @@ import axios from "axios";
 async function FacturaGet(id) {
     try {
         const response = await axios.get(`http://127.0.0.1:8000/factura/${id}`)
-        console.log(response.data)
         return response.data 
     } catch (e) {
         console.error(e)
@@ -13,9 +12,7 @@ async function FacturaGet(id) {
 }
 async function FacturaPost(data) {
     try {
-        console.log(data)
         const response = await axios.post('http://127.0.0.1:8000/factura',data)
-        console.log(response.data)  
         return response.data 
     } catch (e) {
         console.error(e)
