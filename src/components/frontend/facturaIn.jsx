@@ -10,9 +10,11 @@ import IngresoIn from './ingresoIn'
 import GastoIn from './gastoIn'
 import Swal from 'sweetalert2'
 import { datosContex } from '../providers/DatosGProvider'
-function FacturaIn({toggleFactura}) {
+import { facturaContext } from '../providers/facturasProvider'
+function FacturaIn({toggleFactura,cargar}) {
   let {setInfoDatos2,setInfoDatos} = useContext(datosContex)
   let {infoIngreso,setInfoIngreso} = useContext(ingresoContext)
+  let {setInfoFactura} = useContext(facturaContext)
   let {infoGastos,setInfoGastos} = useContext(gastosContex)  
   let {infoUsuario} = useContext(usuarioContext)
 
@@ -69,7 +71,7 @@ function FacturaIn({toggleFactura}) {
   const FacturasPost =async()=>{
     try {
         const response = await FacturaPost({"fecha":dia,"usuario_id":infoUsuario.id,"total":monto})
-
+        setInfoFactura(data=>[...data, {"fecha":dia,"usuario_id":infoUsuario.id,"total":monto}])
       let i =0
       while(i<ingresos.length){
         ingresos[i].factura_id = response.id
@@ -87,6 +89,7 @@ function FacturaIn({toggleFactura}) {
       setInfoDatos(data=>[...data, ...ingresos])
       setInfoDatos2(data=>[...data, ...gastos])
       toggleFactura()
+      cargar()
     } catch (e) {
       
     }

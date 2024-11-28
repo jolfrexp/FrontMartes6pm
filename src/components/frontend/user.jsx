@@ -5,7 +5,7 @@ import img2 from '../../assets/img/mail.svg'
 import '../../assets/css/frontend/user.css'
 import React, { useContext } from 'react'
 
-function User({togglePerfil,onLogin}){
+function User({togglePerfil,onLogin,ingresos,gastos,balance}){
     let {infoUsuario} = useContext(usuarioContext)
   return (
     <>  
@@ -35,16 +35,15 @@ function User({togglePerfil,onLogin}){
             </div>
             <div className="flex">
                 <h4>Gastos:</h4>
-                <h3>32000</h3>
+                <h3>{gastos}</h3>
             </div>
             <div className="flex">
                 <h4>Ingresos:</h4>
-                <h3>50000</h3>
+                <h3>{ingresos}</h3>
             </div>
             <div className="flex">
                 <h4>Balance: </h4>
-                <h3>18000</h3>
-                <h4>+</h4>
+                <h3>{balance}</h3>
             </div>
 
             <div className="botones mt">
